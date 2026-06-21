@@ -199,7 +199,7 @@ header.site.scrolled{
 }
 .brand .logo svg{width:24px;height:24px}
 .brand .logo img{width:100%;height:100%;object-fit:contain;display:block}
-.brand-logo{height:46px;width:auto;display:block;flex:none;transition:height .4s var(--ease)}
+.brand-logo{height:46px;width:auto;aspect-ratio:987 / 231;display:block;flex:none;transition:height .4s var(--ease)}
 header.site.scrolled .brand-logo{height:40px}
 /* the dark-green wordmark needs a light backing to stay legible over the dark hero imagery */
 .brand-logo{background:rgba(255,255,255,.92);border-radius:28px;padding:5px 16px 5px 6px;box-shadow:0 2px 10px rgba(0,0,0,.12)}
