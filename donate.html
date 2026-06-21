@@ -25,6 +25,19 @@
 <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="stylesheet" href="css/style.css">
+<style>
+  .rzp-amounts{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:18px}
+  .rzp-chip{flex:1 1 90px;min-width:90px;padding:12px 8px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-weight:600;cursor:pointer;transition:.2s}
+  .rzp-chip:hover{border-color:var(--green-600)}
+  .rzp-chip.active{background:var(--green-600);border-color:var(--green-600);color:#fff}
+  .rzp-field{margin-bottom:14px}
+  .rzp-field label{display:block;font-size:.9rem;font-weight:600;margin-bottom:6px}
+  .rzp-field input{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);color:var(--ink);font-size:1rem;font-family:inherit}
+  .rzp-field input:focus{outline:none;border-color:var(--green-600)}
+  .rzp-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  @media (max-width:520px){.rzp-grid{grid-template-columns:1fr}}
+  .rzp-test-note{text-align:center;font-size:.82rem;color:var(--muted);margin-top:14px}
+</style>
 </head>
 <body>
 <div id="loader"><div class="loader-mark"><img class="loader-logo" src="images/logo-clean.png" alt="Karisakattu Poove Trust logo"><span>Karisakattu Poove</span></div></div>
@@ -58,6 +71,49 @@
     <h1>Donate Today</h1>
     <p>₹50 plants a tree. ₹1,500 supports a family. Every rupee turns into roots, water and hope.</p>
     <div class="crumbs"><a href="index.html">Home</a> / <span>Donate</span></div>
+  </div>
+</section>
+
+<section class="section" style="padding-bottom:0">
+  <div class="container">
+    <div class="narrow">
+      <div class="form-card" data-reveal>
+        <div class="section-head center" style="margin-bottom:22px">
+          <span class="kicker" style="justify-content:center">Online &middot; UPI / Card / Wallet / Netbanking</span>
+          <h2>Donate online</h2>
+          <p>Enter any amount and donate securely via Razorpay. Instant acknowledgement.</p>
+        </div>
+        <div class="rzp-amounts">
+          <button type="button" class="rzp-chip" data-amt="500">₹500</button>
+          <button type="button" class="rzp-chip active" data-amt="1000">₹1,000</button>
+          <button type="button" class="rzp-chip" data-amt="2000">₹2,000</button>
+          <button type="button" class="rzp-chip" data-amt="5000">₹5,000</button>
+        </div>
+        <div class="rzp-field">
+          <label for="rzp-amount">Donation amount (₹)</label>
+          <input id="rzp-amount" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter amount" value="1000">
+        </div>
+        <div class="rzp-field">
+          <label for="rzp-name">Your name <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+          <input id="rzp-name" type="text" placeholder="Full name" autocomplete="name">
+        </div>
+        <div class="rzp-grid">
+          <div class="rzp-field">
+            <label for="rzp-email">Email <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <input id="rzp-email" type="email" placeholder="you@example.com" autocomplete="email">
+          </div>
+          <div class="rzp-field">
+            <label for="rzp-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+            <input id="rzp-phone" type="tel" placeholder="10-digit mobile" autocomplete="tel">
+          </div>
+        </div>
+        <div class="center mt-m">
+          <button id="rzp-donate" type="button" class="btn btn-gold btn-lg">Donate <span id="rzp-btn-amt">₹1,000</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+        <p class="rzp-test-note" id="rzp-test-note">🔒 Secure payment via Razorpay — <b>Test Mode</b>. Use card <b>4111 1111 1111 1111</b>, any future expiry &amp; any CVV. No real money is charged.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -104,5 +160,80 @@
 <script src="js/footer.js"></script>
 <script src="js/script.js"></script>
 <script src="js/i18n.js"></script>
+
+<!-- ===== Razorpay donation (Test Mode) ===== -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+(function () {
+  // 1) Paste your Razorpay TEST Key ID here (Dashboard → Settings → API Keys, Test Mode).
+  //    It starts with "rzp_test_". When you go live, swap it for your "rzp_live_" key.
+  var RAZORPAY_KEY = "rzp_test_REPLACE_WITH_YOUR_TEST_KEY";
+
+  var amtInput = document.getElementById("rzp-amount");
+  var btn      = document.getElementById("rzp-donate");
+  var btnAmt   = document.getElementById("rzp-btn-amt");
+  var chips    = document.querySelectorAll(".rzp-chip");
+  if (!amtInput || !btn) return;
+
+  function fmt(n) { return "₹" + Number(n).toLocaleString("en-IN"); }
+  function currentAmt() { return Math.floor(Number(amtInput.value) || 0); }
+  function syncBtn() { btnAmt.textContent = currentAmt() > 0 ? fmt(currentAmt()) : ""; }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener("click", function () {
+      chips.forEach(function (c) { c.classList.remove("active"); });
+      chip.classList.add("active");
+      amtInput.value = chip.getAttribute("data-amt");
+      syncBtn();
+    });
+  });
+  amtInput.addEventListener("input", function () {
+    chips.forEach(function (c) {
+      c.classList.toggle("active", c.getAttribute("data-amt") === String(currentAmt()));
+    });
+    syncBtn();
+  });
+  syncBtn();
+
+  btn.addEventListener("click", function () {
+    var amount = currentAmt();
+    if (amount < 1) { alert("Please enter a donation amount."); amtInput.focus(); return; }
+    if (RAZORPAY_KEY.indexOf("REPLACE") !== -1) {
+      alert("Razorpay key not set yet. Add your test key in donate.html (RAZORPAY_KEY).");
+      return;
+    }
+
+    var options = {
+      key: RAZORPAY_KEY,
+      amount: amount * 100,            // Razorpay expects paise
+      currency: "INR",
+      name: "Karisakattu Poove Trust",
+      description: "Donation towards tree plantation & community work",
+      image: "images/logo-clean.png",
+      prefill: {
+        name:    (document.getElementById("rzp-name")  || {}).value || "",
+        email:   (document.getElementById("rzp-email") || {}).value || "",
+        contact: (document.getElementById("rzp-phone") || {}).value || ""
+      },
+      notes: { purpose: "Donation", trust_reg: "74/2020" },
+      theme: { color: "#2e7d32" },
+      handler: function (response) {
+        var note = document.getElementById("rzp-test-note");
+        if (note) {
+          note.innerHTML = "✅ Thank you! Payment successful. Reference: <b>" +
+            response.razorpay_payment_id + "</b>";
+          note.style.color = "var(--green-700)";
+        }
+      }
+    };
+
+    var rzp = new Razorpay(options);
+    rzp.on("payment.failed", function (resp) {
+      alert("Payment failed: " + (resp.error && resp.error.description ? resp.error.description : "please try again."));
+    });
+    rzp.open();
+  });
+})();
+</script>
 </body>
 </html>
