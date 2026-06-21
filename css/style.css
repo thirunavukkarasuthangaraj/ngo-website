@@ -357,10 +357,6 @@ header.site:not(.scrolled) .burger{color:#fff}
 .scroll-ind .mouse::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:7px;background:#fff;border-radius:2px;transform:translateX(-50%);animation:wheel 1.6s var(--ease) infinite}
 @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
 
-/* wave divider */
-.wave-divider{position:absolute;bottom:-1px;left:0;width:100%;line-height:0;z-index:1}
-.wave-divider svg{width:100%;height:auto;display:block;fill:var(--bg)}
-
 /* page hero (inner pages) */
 .page-hero{position:relative;padding:calc(var(--nav-h) + 70px) 0 70px;overflow:hidden;isolation:isolate;text-align:center}
 .page-hero::before{content:"";position:absolute;inset:0;z-index:-2}
@@ -406,7 +402,7 @@ header.site:not(.scrolled) .burger{color:#fff}
 @media (max-width:480px){.impact-grid{grid-template-columns:1fr}}
 
 /* lift the impact band over the wave */
-.impact-band{margin-top:-70px;position:relative;z-index:3}
+.impact-band{margin-top:0;position:relative;z-index:3}
 
 /* ===================================================================
    ABOUT / SPLIT
