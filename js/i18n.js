@@ -91,6 +91,14 @@
     // Hero subtitles / common lines
     "Creating greener villages and stronger communities through environmental and social initiatives — one tree, one family, one forest at a time.":
       "சுற்றுச்சூழல் மற்றும் சமூகப் பணிகள் மூலம் பசுமையான கிராமங்களையும் வலிமையான சமூகங்களையும் உருவாக்குகிறோம் — ஒரு மரம், ஒரு குடும்பம், ஒரு காடு.",
+    // About section (home)
+    "Rooted in our soil, growing a greener tomorrow": "எங்கள் மண்ணில் வேரூன்றி, பசுமையான நாளையை வளர்க்கிறோம்",
+    "Karisakattu Poove Trust (Karisa Kattu Poove) is an environmental and social welfare NGO in Hosur, Tamil Nadu. We began with a simple belief — that the barren, sun-baked lands around Hosur could bloom again. Today we plant trees, grow Miyawaki forests, conserve water and revive ponds, bringing together volunteers, farmers, schools and companies to restore nature and uplift communities across Krishnagiri district.":
+      "கரிசக்காட்டு பூவே டிரஸ்ட் (கரிச கட்டு பூவே) என்பது தமிழ்நாடு, ஓசூரில் உள்ள ஒரு சுற்றுச்சூழல் மற்றும் சமூக நல அமைப்பாகும். ஓசூரைச் சுற்றியுள்ள தரிசான, வெயிலில் வெந்த நிலங்கள் மீண்டும் பூக்க முடியும் என்ற எளிய நம்பிக்கையுடன் தொடங்கினோம். இன்று நாங்கள் மரங்களை நடுகிறோம், மியாவாகி காடுகளை வளர்க்கிறோம், நீரைப் பாதுகாக்கிறோம், குளங்களை மீட்டெடுக்கிறோம் — தன்னார்வலர்கள், விவசாயிகள், பள்ளிகள் மற்றும் நிறுவனங்களை ஒன்றிணைத்து கிருஷ்ணகிரி மாவட்டம் முழுவதும் இயற்கையை மீட்டெடுத்து சமூகங்களை மேம்படுத்துகிறோம்.",
+    "To restore degraded land into thriving green ecosystems while empowering rural families through education, water security and livelihoods.":
+      "சீரழிந்த நிலங்களை செழிப்பான பசுமைச் சூழல்களாக மீட்டெடுப்பதோடு, கல்வி, நீர் பாதுகாப்பு மற்றும் வாழ்வாதாரங்கள் மூலம் கிராமக் குடும்பங்களை வலுப்படுத்துவது.",
+    "A Tamil Nadu where every village is surrounded by forests, every child learns under green canopies, and no family is left behind.":
+      "ஒவ்வொரு கிராமமும் காடுகளால் சூழப்பட்ட, ஒவ்வொரு குழந்தையும் பசுமைக் குடைகளின் கீழ் கற்கும், எந்தக் குடும்பமும் பின்தங்காத ஒரு தமிழ்நாடு.",
     // In the News (home)
     "In the News": "செய்திகளில்",
     "Featured in the press": "பத்திரிகைகளில் இடம்பெற்றோம்",
