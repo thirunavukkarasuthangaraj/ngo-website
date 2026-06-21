@@ -38,51 +38,22 @@
 <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
 <link rel="stylesheet" href="css/style.css">
 <style>
-  /* ===== Animated "grow from the soil" scene (replaces About photo) ===== */
-  .grow-scene{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
-    border:1px solid var(--line);box-shadow:var(--shadow-md);
-    background:linear-gradient(180deg,#eaf6ec 0%,#e0f1e3 52%,#d4ead7 70%)}
-  [data-theme="dark"] .grow-scene{background:linear-gradient(180deg,#15241a 0%,#123420 58%,#0d2917 100%)}
-  .grow-scene svg{display:block;width:100%;height:100%}
-  .grow-scene .sun{transform-box:fill-box;transform-origin:center;animation:gsSun 5s ease-in-out infinite}
-
-  /* hidden until the section scrolls into view, then grows: seed → tree */
-  .grow-scene .trunk,.grow-scene .root,.grow-scene .branch{stroke-dasharray:100;stroke-dashoffset:100}
-  .grow-scene .foliage,.grow-scene .seed{transform-box:fill-box;transform-origin:center;transform:scale(0)}
-  .grow-scene .plant{transform-box:fill-box;transform-origin:50% 100%}
-
-  .grow-scene.in .seed{animation:gsPop .5s ease-out forwards}
-  .grow-scene.in .root{animation:gsDraw 1.5s ease-out forwards}
-  .grow-scene.in .r1{animation-delay:.3s}
-  .grow-scene.in .r2,.grow-scene.in .r3{animation-delay:.45s}
-  .grow-scene.in .r4,.grow-scene.in .r5{animation-delay:.6s}
-  .grow-scene.in .r6,.grow-scene.in .r7{animation-delay:.8s}
-  .grow-scene.in .trunk{animation:gsDraw 1.7s ease-out .7s forwards}
-  .grow-scene.in .branch{animation:gsDraw .9s ease-out 2s forwards}
-  .grow-scene.in .foliage{animation:gsPop .75s cubic-bezier(.34,1.56,.64,1) forwards}
-  .grow-scene.in .foliage.f1{animation-delay:2.3s}
-  .grow-scene.in .foliage.f2{animation-delay:2.55s}
-  .grow-scene.in .foliage.f3{animation-delay:2.8s}
-  .grow-scene.in .foliage.f4{animation-delay:3.05s}
-  .grow-scene.in .foliage.f5{animation-delay:3.3s}
-  /* forest: companion trees rise after the main tree */
-  .grow-scene .bgtree{transform-box:fill-box;transform-origin:50% 100%;transform:scale(0)}
-  .grow-scene.in .bgtree{animation:gsPop .8s cubic-bezier(.34,1.45,.64,1) forwards}
-  .grow-scene.in .bgtree.t1{animation-delay:3.7s}
-  .grow-scene.in .bgtree.t2{animation-delay:3.9s}
-  .grow-scene.in .bgtree.t3{animation-delay:4.15s}
-  .grow-scene.in .bgtree.t4{animation-delay:4.4s}
-  .grow-scene.in .plant{animation:gsSway 5.5s ease-in-out 4.8s infinite}
-
-  @keyframes gsDraw{to{stroke-dashoffset:0}}
-  @keyframes gsPop{to{transform:scale(1)}}
-  @keyframes gsSway{0%,100%{transform:rotate(-1.4deg)}50%{transform:rotate(1.4deg)}}
-  @keyframes gsSun{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.06);opacity:1}}
-
+  /* ===== About photo — cinematic reveal (fade in + slow zoom) ===== */
+  .reveal-photo{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
+    box-shadow:var(--shadow-lg);border:1px solid var(--line)}
+  .reveal-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.16);will-change:transform}
+  .reveal-photo.in img{animation:rpZoom 14s ease-out forwards}
+  .reveal-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(to top,rgba(8,22,12,.62),rgba(8,22,12,.05) 42%,transparent 60%)}
+  .reveal-photo .rp-cap{position:absolute;left:20px;right:20px;bottom:18px;z-index:2;color:#fff;
+    font-family:var(--ff-display);font-weight:600;font-size:1.02rem;line-height:1.4;
+    text-shadow:0 1px 8px rgba(0,0,0,.45);opacity:0;transform:translateY(10px);
+    transition:opacity .8s ease .5s,transform .8s ease .5s}
+  .reveal-photo.in .rp-cap{opacity:1;transform:none}
+  @keyframes rpZoom{0%{transform:scale(1.16)}22%{transform:scale(1.04)}100%{transform:scale(1.09)}}
   @media (prefers-reduced-motion:reduce){
-    .grow-scene .trunk,.grow-scene .root,.grow-scene .branch{stroke-dashoffset:0}
-    .grow-scene .foliage,.grow-scene .seed{transform:scale(1)}
-    .grow-scene .sun,.grow-scene.in *{animation:none!important}
+    .reveal-photo img{transform:none;animation:none}
+    .reveal-photo .rp-cap{opacity:1;transform:none;transition:none}
   }
 </style>
 
@@ -234,82 +205,9 @@
   <div class="container">
     <div class="split">
       <div class="split-media" data-reveal>
-        <div class="grow-scene" data-reveal role="img" aria-label="Animated seedling growing from the soil — roots reaching down and leaves unfurling">
-          <svg viewBox="0 0 400 500" xmlns="http://www.w3.org/2000/svg">
-            <defs>
-              <radialGradient id="gsSunG" cx="50%" cy="50%" r="50%">
-                <stop offset="0%" stop-color="#ffe9a8"/><stop offset="60%" stop-color="#ffd45e"/><stop offset="100%" stop-color="#ffc233"/>
-              </radialGradient>
-              <linearGradient id="gsSoil" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#7a5230"/><stop offset="100%" stop-color="#4a3019"/>
-              </linearGradient>
-              <radialGradient id="gsCrownA" cx="40%" cy="35%" r="70%">
-                <stop offset="0%" stop-color="#7ed083"/><stop offset="100%" stop-color="#2e7d32"/>
-              </radialGradient>
-              <radialGradient id="gsCrownB" cx="40%" cy="35%" r="70%">
-                <stop offset="0%" stop-color="#9bdf9f"/><stop offset="100%" stop-color="#3e9b48"/>
-              </radialGradient>
-            </defs>
-
-            <!-- sun -->
-            <circle class="sun" cx="334" cy="82" r="36" fill="url(#gsSunG)"/>
-
-            <!-- soil -->
-            <path d="M0,374 Q100,352 200,368 T400,362 L400,500 L0,500 Z" fill="url(#gsSoil)"/>
-            <path d="M0,374 Q100,352 200,368 T400,362" fill="none" stroke="#946338" stroke-width="5" opacity=".55"/>
-
-            <!-- forest (companion trees, behind the main tree) -->
-            <g class="forest">
-              <!-- distant small trees -->
-              <g class="bgtree t3">
-                <rect x="116" y="320" width="8" height="48" rx="4" fill="#4f3620"/>
-                <circle cx="120" cy="314" r="24" fill="#276b30"/><circle cx="103" cy="324" r="16" fill="#2a7234"/>
-              </g>
-              <g class="bgtree t4">
-                <rect x="276" y="320" width="8" height="48" rx="4" fill="#4f3620"/>
-                <circle cx="280" cy="314" r="24" fill="#276b30"/><circle cx="297" cy="324" r="16" fill="#2a7234"/>
-              </g>
-              <!-- flanking medium trees -->
-              <g class="bgtree t1">
-                <rect x="52" y="296" width="11" height="72" rx="5" fill="#5e3f24"/>
-                <circle cx="58" cy="290" r="34" fill="#2f7a39"/><circle cx="36" cy="306" r="22" fill="#2f7a39"/><circle cx="80" cy="304" r="23" fill="#357f3e"/>
-              </g>
-              <g class="bgtree t2">
-                <rect x="337" y="296" width="11" height="72" rx="5" fill="#5e3f24"/>
-                <circle cx="342" cy="290" r="34" fill="#2f7a39"/><circle cx="364" cy="306" r="22" fill="#2f7a39"/><circle cx="320" cy="304" r="23" fill="#357f3e"/>
-              </g>
-            </g>
-
-            <!-- roots -->
-            <g class="roots" stroke="#9a6a3d" stroke-linecap="round" fill="none">
-              <path class="root r1" pathLength="100" stroke-width="7"   d="M200,364 C201,408 200,450 201,492"/>
-              <path class="root r2" pathLength="100" stroke-width="5.5" d="M200,368 C176,396 156,418 132,458"/>
-              <path class="root r3" pathLength="100" stroke-width="5.5" d="M200,368 C224,396 244,418 268,458"/>
-              <path class="root r4" pathLength="100" stroke-width="4"   d="M200,370 C166,390 138,400 104,428"/>
-              <path class="root r5" pathLength="100" stroke-width="4"   d="M200,370 C234,390 262,400 296,428"/>
-              <path class="root r6" pathLength="100" stroke-width="3"   d="M160,408 C152,422 146,432 138,450"/>
-              <path class="root r7" pathLength="100" stroke-width="3"   d="M240,408 C248,422 254,432 262,450"/>
-            </g>
-
-            <!-- seed -->
-            <ellipse class="seed" cx="200" cy="364" rx="12" ry="9" fill="#6f4a2a"/>
-
-            <!-- tree -->
-            <g class="plant">
-              <!-- trunk -->
-              <path class="trunk" pathLength="100" d="M200,368 C198,326 202,288 200,250 C199,236 200,224 200,212" fill="none" stroke="#6f4a2a" stroke-width="15" stroke-linecap="round"/>
-              <!-- branches -->
-              <path class="branch" pathLength="100" d="M200,264 C182,252 164,250 150,240" fill="none" stroke="#6f4a2a" stroke-width="8" stroke-linecap="round"/>
-              <path class="branch" pathLength="100" d="M200,250 C220,240 240,238 256,230" fill="none" stroke="#6f4a2a" stroke-width="8" stroke-linecap="round"/>
-              <path class="branch" pathLength="100" d="M200,232 C190,222 180,218 170,210" fill="none" stroke="#6f4a2a" stroke-width="7" stroke-linecap="round"/>
-              <!-- leafy canopy -->
-              <circle class="foliage f1" cx="200" cy="166" r="62" fill="url(#gsCrownA)"/>
-              <circle class="foliage f2" cx="148" cy="190" r="46" fill="url(#gsCrownB)"/>
-              <circle class="foliage f3" cx="252" cy="184" r="48" fill="url(#gsCrownB)"/>
-              <circle class="foliage f4" cx="210" cy="112" r="48" fill="url(#gsCrownA)"/>
-              <circle class="foliage f5" cx="186" cy="150" r="40" fill="url(#gsCrownB)" opacity=".95"/>
-            </g>
-          </svg>
+        <div class="reveal-photo" data-reveal>
+          <img src="images/hero.jpg" alt="A thriving forest grown by Karisakattu Poove Trust on once-barren land in Hosur" loading="lazy">
+          <span class="rp-cap">From barren land to a thriving Miyawaki forest 🌳</span>
         </div>
       </div>
       <div class="split-body" data-reveal data-delay="1">
