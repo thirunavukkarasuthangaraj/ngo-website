@@ -366,17 +366,30 @@ header.site:not(.scrolled) .burger{color:#fff}
    =================================================================== */
 .impact-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:18px}
 .stat-card{
-  background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);
-  padding:30px 22px;text-align:center;box-shadow:var(--shadow-sm);
+  position:relative;overflow:hidden;
+  background:linear-gradient(165deg,var(--card),var(--green-050));
+  border:1px solid var(--line);border-radius:var(--r-lg);
+  padding:34px 22px 30px;text-align:center;box-shadow:var(--shadow-sm);
+  transition:transform .4s var(--ease),box-shadow .4s var(--ease),border-color .4s var(--ease);
+}
+/* green->gold accent bar on the top edge */
+.stat-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--green-500),var(--gold-500));
+}
+.stat-card:hover{transform:translateY(-6px);box-shadow:0 22px 50px -18px rgba(43,140,60,.45);border-color:transparent}
+.stat-card .ico{
+  width:58px;height:58px;margin:0 auto 16px;border-radius:18px;display:grid;place-items:center;
+  background:var(--green-100);color:var(--green-700);
+  box-shadow:0 0 0 6px rgba(67,160,71,.08),0 8px 20px -8px rgba(67,160,71,.5);
   transition:transform .4s var(--ease),box-shadow .4s var(--ease);
 }
-.stat-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-md)}
-.stat-card .ico{width:54px;height:54px;margin:0 auto 14px;border-radius:16px;display:grid;place-items:center;background:var(--green-100);color:var(--green-700)}
-[data-theme="dark"] .stat-card .ico{background:var(--bg-tint);color:var(--green-400)}
-.stat-card .ico svg{width:26px;height:26px}
+[data-theme="dark"] .stat-card .ico{background:var(--bg-tint);color:var(--green-400);box-shadow:0 0 0 6px rgba(102,187,106,.06),0 8px 22px -8px rgba(102,187,106,.4)}
+.stat-card:hover .ico{transform:translateY(-2px) scale(1.06);box-shadow:0 0 0 7px rgba(67,160,71,.14),0 12px 26px -8px rgba(67,160,71,.6)}
+.stat-card .ico svg{width:28px;height:28px}
 .stat-card .num{font-family:var(--ff-display);font-weight:800;font-size:clamp(1.9rem,3vw,2.6rem);color:var(--ink);line-height:1}
 .stat-card .num .plus{color:var(--gold-500)}
-.stat-card .lbl{margin-top:6px;color:var(--muted);font-size:.92rem;font-weight:500}
+.stat-card .lbl{margin-top:8px;color:var(--muted);font-size:.92rem;font-weight:500}
 @media (max-width:920px){.impact-grid{grid-template-columns:repeat(2,1fr)}}
 @media (max-width:480px){.impact-grid{grid-template-columns:1fr}}
 
