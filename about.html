@@ -29,8 +29,14 @@
 <style>
   .video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
   .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
-  .split-media .frame video{width:100%;height:100%;object-fit:cover;aspect-ratio:5/5.6;display:block;background:#0a140c}
-  @media (max-width:860px){.split-media .frame video{aspect-ratio:16/11}}
+  .split-media .frame video{width:100%;height:auto;display:block;background:#0a140c;border-radius:inherit}
+  .intro-frame{position:relative}
+  .intro-frame .vplay{position:absolute;inset:0;margin:auto;width:76px;height:76px;border-radius:50%;border:0;cursor:pointer;
+    background:rgba(255,255,255,.94);display:grid;place-items:center;box-shadow:0 10px 34px rgba(0,0,0,.45);
+    transition:transform .2s ease,background .2s ease;z-index:3}
+  .intro-frame .vplay:hover{transform:scale(1.09);background:#fff}
+  .intro-frame .vplay svg{width:32px;height:32px;color:var(--green-700);margin-left:4px}
+  .intro-frame.playing .vplay{opacity:0;pointer-events:none}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AboutPage","name":"About Karisakattu Poove Trust","url":"https://karisakattupoovetrust.org/about.html","about":{"@type":"NGO","name":"Karisakattu Poove Trust","areaServed":"Hosur, Tamil Nadu, India"}}
@@ -75,7 +81,10 @@
   <div class="container">
     <div class="split">
       <div class="split-media" data-reveal>
-        <div class="frame"><video controls playsinline preload="metadata" poster="images/hero.jpg" aria-label="Karisakattu Poove Trust intro video"><source src="images/videos/intro.mp4" type="video/mp4">Your browser does not support the video.</video></div>
+        <div class="frame intro-frame">
+          <video id="introVid" playsinline preload="metadata" poster="images/gallery/volunteers-women.jpg" aria-label="Karisakattu Poove Trust intro video"><source src="images/videos/intro.mp4" type="video/mp4">Your browser does not support the video.</video>
+          <button class="vplay" type="button" aria-label="Play intro video"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></button>
+        </div>
       </div>
       <div class="split-body" data-reveal data-delay="1">
         <span class="kicker">Our Story</span>
@@ -216,5 +225,16 @@
 <script src="js/footer.js"></script>
 <script src="js/script.js"></script>
 <script src="js/i18n.js"></script>
+<script>
+(function () {
+  var f = document.querySelector('.intro-frame');
+  if (!f) return;
+  var v = f.querySelector('video'), b = f.querySelector('.vplay');
+  b.addEventListener('click', function () { v.controls = true; v.play(); });
+  v.addEventListener('play', function () { f.classList.add('playing'); v.controls = true; });
+  v.addEventListener('pause', function () { f.classList.remove('playing'); });
+  v.addEventListener('ended', function () { f.classList.remove('playing'); });
+})();
+</script>
 </body>
 </html>
