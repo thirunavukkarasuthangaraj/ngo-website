@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://karisakattupoovetrust.org/sitemap.xml
