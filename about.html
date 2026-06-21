@@ -29,6 +29,8 @@
 <style>
   .video-embed{position:relative;width:100%;aspect-ratio:16/9;border-radius:var(--r-lg);overflow:hidden;box-shadow:var(--shadow-lg);border:1px solid var(--line)}
   .video-embed iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+  .split-media .frame video{width:100%;height:100%;object-fit:cover;aspect-ratio:5/5.6;display:block;background:#0a140c}
+  @media (max-width:860px){.split-media .frame video{aspect-ratio:16/11}}
 </style>
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"AboutPage","name":"About Karisakattu Poove Trust","url":"https://karisakattupoovetrust.org/about.html","about":{"@type":"NGO","name":"Karisakattu Poove Trust","areaServed":"Hosur, Tamil Nadu, India"}}
@@ -73,7 +75,7 @@
   <div class="container">
     <div class="split">
       <div class="split-media" data-reveal>
-        <div class="frame"><img src="images/forest-feature.jpg" alt="A thriving Miyawaki forest" loading="lazy"></div>
+        <div class="frame"><video controls playsinline preload="metadata" poster="images/hero.jpg" aria-label="Karisakattu Poove Trust intro video"><source src="images/videos/intro.mp4" type="video/mp4">Your browser does not support the video.</video></div>
       </div>
       <div class="split-body" data-reveal data-delay="1">
         <span class="kicker">Our Story</span>
