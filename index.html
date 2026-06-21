@@ -52,8 +52,11 @@
   .grow-scene .plant{transform-box:fill-box;transform-origin:50% 100%}
 
   .grow-scene.in .seed{animation:gsPop .5s ease-out forwards}
-  .grow-scene.in .root{animation:gsDraw 1.6s ease-out .3s forwards}
-  .grow-scene.in .root.r2,.grow-scene.in .root.r3{animation-delay:.45s}
+  .grow-scene.in .root{animation:gsDraw 1.5s ease-out forwards}
+  .grow-scene.in .r1{animation-delay:.3s}
+  .grow-scene.in .r2,.grow-scene.in .r3{animation-delay:.45s}
+  .grow-scene.in .r4,.grow-scene.in .r5{animation-delay:.6s}
+  .grow-scene.in .r6,.grow-scene.in .r7{animation-delay:.8s}
   .grow-scene.in .trunk{animation:gsDraw 1.7s ease-out .7s forwards}
   .grow-scene.in .branch{animation:gsDraw .9s ease-out 2s forwards}
   .grow-scene.in .foliage{animation:gsPop .75s cubic-bezier(.34,1.56,.64,1) forwards}
@@ -278,10 +281,14 @@
             </g>
 
             <!-- roots -->
-            <g class="roots" stroke="#9a6a3d" stroke-width="5.5" stroke-linecap="round" fill="none">
-              <path class="root" pathLength="100" d="M200,366 C200,406 198,446 202,488"/>
-              <path class="root r2" pathLength="100" d="M200,372 C170,402 142,420 116,464"/>
-              <path class="root r3" pathLength="100" d="M200,372 C230,402 258,420 284,464"/>
+            <g class="roots" stroke="#9a6a3d" stroke-linecap="round" fill="none">
+              <path class="root r1" pathLength="100" stroke-width="7"   d="M200,364 C201,408 200,450 201,492"/>
+              <path class="root r2" pathLength="100" stroke-width="5.5" d="M200,368 C176,396 156,418 132,458"/>
+              <path class="root r3" pathLength="100" stroke-width="5.5" d="M200,368 C224,396 244,418 268,458"/>
+              <path class="root r4" pathLength="100" stroke-width="4"   d="M200,370 C166,390 138,400 104,428"/>
+              <path class="root r5" pathLength="100" stroke-width="4"   d="M200,370 C234,390 262,400 296,428"/>
+              <path class="root r6" pathLength="100" stroke-width="3"   d="M160,408 C152,422 146,432 138,450"/>
+              <path class="root r7" pathLength="100" stroke-width="3"   d="M240,408 C248,422 254,432 262,450"/>
             </g>
 
             <!-- seed -->
@@ -303,10 +310,6 @@
               <circle class="foliage f5" cx="186" cy="150" r="40" fill="url(#gsCrownB)" opacity=".95"/>
             </g>
           </svg>
-        </div>
-        <div class="badge b1">
-          <span class="b-ico"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg></span>
-          <span><b>5+ Years</b><span>of grassroots impact</span></span>
         </div>
       </div>
       <div class="split-body" data-reveal data-delay="1">
