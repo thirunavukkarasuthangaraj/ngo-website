@@ -77,11 +77,39 @@
       track.innerHTML = upcoming.map(card).join("");
       section.style.display = "";
 
-      var prev = section.querySelector(".he-prev");
-      var next = section.querySelector(".he-next");
-      function step(dir) { track.scrollBy({ left: dir * track.clientWidth * 0.92, behavior: "smooth" }); }
-      if (prev) prev.addEventListener("click", function () { step(-1); });
-      if (next) next.addEventListener("click", function () { step(1); });
+      // Dot pagination — one dot per card, click to jump, highlight on scroll.
+      var dotsWrap = document.getElementById("homeEventsDots");
+      var cards = track.querySelectorAll(".event-card");
+      var dots = [];
+      function cardStep() {
+        return cards.length > 1 ? (cards[1].offsetLeft - cards[0].offsetLeft) : track.clientWidth;
+      }
+      if (dotsWrap) {
+        dotsWrap.innerHTML = "";
+        if (cards.length > 1) {
+          upcoming.forEach(function (ev, i) {
+            var b = document.createElement("button");
+            b.type = "button";
+            b.className = "he-dot" + (i === 0 ? " active" : "");
+            b.setAttribute("aria-label", "Go to event " + (i + 1));
+            b.addEventListener("click", function () {
+              track.scrollTo({ left: i * cardStep(), behavior: "smooth" });
+            });
+            dotsWrap.appendChild(b);
+            dots.push(b);
+          });
+        }
+        var raf;
+        track.addEventListener("scroll", function () {
+          if (raf) return;
+          raf = requestAnimationFrame(function () {
+            raf = null;
+            var idx = Math.round(track.scrollLeft / cardStep());
+            idx = Math.max(0, Math.min(dots.length - 1, idx));
+            dots.forEach(function (d, i) { d.classList.toggle("active", i === idx); });
+          });
+        }, { passive: true });
+      }
 
       section.querySelectorAll("[data-reveal]").forEach(function (el) { el.classList.add("in"); });
       if (typeof window.KPT_retranslate === "function") window.KPT_retranslate();
