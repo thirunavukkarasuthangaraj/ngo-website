@@ -139,7 +139,7 @@ strong{color:var(--ink)}
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:10px;
   font-family:var(--ff-display);font-weight:600;font-size:.97rem;
-  padding:14px 28px;border-radius:var(--r-pill);
+  padding:14px 28px;border-radius:var(--r-pill);cursor:pointer;
   transition:transform .35s var(--ease),box-shadow .35s var(--ease),background .3s,color .3s;
   white-space:nowrap;line-height:1;
 }
@@ -150,13 +150,14 @@ strong{color:var(--ink)}
 .btn-gold:hover{background:var(--gold-600);color:#fff;transform:translateY(-3px)}
 /* tactile press feedback on every button */
 .btn:active{transform:scale(.95)}
-/* Register button: gentle attention pulse + clear click animation */
-.btn.js-register{position:relative;animation:reg-pulse 2.4s var(--ease) infinite}
+/* Register button: gentle attention "breathing" glow (inner glow stays
+   visible even though the slider track clips outer shadows) + press feel */
+.btn.js-register{position:relative;cursor:pointer;animation:reg-pulse 2s ease-in-out infinite}
 .btn.js-register:hover{animation-play-state:paused}
 .btn.js-register:active{transform:scale(.93)}
 @keyframes reg-pulse{
-  0%,100%{box-shadow:0 12px 26px -12px rgba(46,125,50,.7),0 0 0 0 rgba(67,160,71,.55)}
-  55%{box-shadow:0 12px 26px -12px rgba(46,125,50,.7),0 0 0 12px rgba(67,160,71,0)}
+  0%,100%{box-shadow:0 12px 26px -12px rgba(46,125,50,.7),inset 0 0 0 0 rgba(255,255,255,0)}
+  50%{box-shadow:0 14px 30px -10px rgba(46,125,50,.85),0 0 16px 1px rgba(67,160,71,.5),inset 0 0 16px 1px rgba(255,255,255,.28)}
 }
 @media (prefers-reduced-motion:reduce){.btn.js-register{animation:none}}
 .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line)}
