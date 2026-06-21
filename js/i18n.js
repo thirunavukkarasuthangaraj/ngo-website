@@ -104,6 +104,13 @@
     "Featured in the press": "பத்திரிகைகளில் இடம்பெற்றோம்",
     "Our green mission has been recognised by leading media for its impact across Hosur and Krishnagiri.":
       "ஓசூர் மற்றும் கிருஷ்ணகிரி முழுவதும் எங்கள் பசுமைப் பணிக்காக முன்னணி ஊடகங்களால் அங்கீகரிக்கப்பட்டுள்ளோம்.",
+    // Our Story (about)
+    "The name Karisakattu Poove — \"the flower of the black, arid soil\" — captures our belief that even the harshest land can bloom again.":
+      "கரிசக்காட்டு பூவே என்ற பெயர் — \"கருமையான, வறண்ட மண்ணின் மலர்\" — மிகக் கடினமான நிலமும் மீண்டும் மலரும் என்ற எங்கள் நம்பிக்கையை வெளிப்படுத்துகிறது.",
+    "What started in 2019 with our first 1,000-sapling Miyawaki forest at Chennathur, Hosur has grown into a movement of thousands. We saw farmers losing soil, villages losing water, and children losing green spaces — and decided to act, tree by tree.":
+      "2019-ல் ஓசூர், சென்னத்தூரில் எங்கள் முதல் 1,000 கன்று மியாவாகி காட்டுடன் தொடங்கியது ஆயிரக்கணக்கானோரின் இயக்கமாக வளர்ந்துள்ளது. விவசாயிகள் மண்ணை இழப்பதையும், கிராமங்கள் நீரை இழப்பதையும், குழந்தைகள் பசுமை இடங்களை இழப்பதையும் கண்டோம் — ஒவ்வொரு மரமாகச் செயல்பட முடிவு செய்தோம்.",
+    "Today, Karisakattu Poove Trust works hand-in-hand with local communities, schools, government bodies and companies to restore ecosystems and rebuild lives. Every project is rooted in one principle: nature and people must grow together.":
+      "இன்று, கரிசக்காட்டு பூவே டிரஸ்ட் உள்ளூர் சமூகங்கள், பள்ளிகள், அரசு அமைப்புகள் மற்றும் நிறுவனங்களுடன் இணைந்து சூழல்களை மீட்டெடுத்து வாழ்க்கைகளை மீளக் கட்டியெழுப்புகிறது. ஒவ்வொரு திட்டமும் ஒரே கொள்கையில் வேரூன்றியுள்ளது: இயற்கையும் மக்களும் ஒன்றாக வளர வேண்டும்.",
     // Team & volunteers (about)
     "The People": "மக்கள்",
     "Our team & volunteers": "எங்கள் குழு & தன்னார்வலர்கள்",
