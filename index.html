@@ -41,7 +41,8 @@
   /* ===== About photo — cinematic reveal (fade in + slow zoom) ===== */
   .reveal-photo{position:relative;width:100%;aspect-ratio:4/5;border-radius:var(--r-lg);overflow:hidden;
     box-shadow:var(--shadow-lg);border:1px solid var(--line)}
-  .reveal-photo img{width:100%;height:100%;object-fit:cover;display:block;transform:scale(1.16);will-change:transform}
+  .reveal-photo img,.reveal-photo video{width:100%;height:100%;object-fit:cover;display:block}
+  .reveal-photo img{transform:scale(1.16);will-change:transform}
   .reveal-photo.in img{animation:rpZoom 14s ease-out forwards}
   .reveal-photo::after{content:"";position:absolute;inset:0;pointer-events:none;
     background:linear-gradient(to top,rgba(8,22,12,.62),rgba(8,22,12,.05) 42%,transparent 60%)}
@@ -206,8 +207,10 @@
     <div class="split">
       <div class="split-media" data-reveal>
         <div class="reveal-photo" data-reveal>
-          <img src="images/hero.jpg" alt="A thriving forest grown by Karisakattu Poove Trust on once-barren land in Hosur" loading="lazy">
-          <span class="rp-cap">From barren land to a thriving Miyawaki forest 🌳</span>
+          <video autoplay muted loop playsinline preload="metadata" poster="images/hero.jpg" aria-label="A tree growing — Karisakattu Poove Trust">
+            <source src="images/videos/tree-grow.mp4" type="video/mp4">
+          </video>
+          <span class="rp-cap">From a seed to a thriving forest 🌳</span>
         </div>
       </div>
       <div class="split-body" data-reveal data-delay="1">
