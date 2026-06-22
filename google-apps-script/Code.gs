@@ -17,7 +17,8 @@ var TABS = {
   event:        { name: 'Events',        cols: ['Timestamp','Title','Date','Time','Location','Description','Status'] },
   volunteer:    { name: 'Volunteers',    cols: ['Timestamp','Name','Phone','Email','Location','Availability','Interests','Skills'] },
   contact:      { name: 'Enquiries',     cols: ['Timestamp','Name','Email','Phone','Subject','Message'] },
-  registration: { name: 'Registrations', cols: ['Timestamp','Event','Name','Phone','Email','People'] }
+  registration: { name: 'Registrations', cols: ['Timestamp','Event','Name','Phone','Email','People'] },
+  donation:     { name: 'Donations',     cols: ['Timestamp','Name','Email','Phone','Amount (INR)','Payment ID'] }
 };
 
 function doGet() {
@@ -33,6 +34,7 @@ function doPost(e) {
     if (type === 'volunteer') return handleVolunteer(body);
     if (type === 'contact') return handleContact(body);
     if (type === 'registration') return handleRegistration(body);
+    if (type === 'donation') return handleDonation(body);
     return json({ ok: false, error: 'Unknown submission type.' });
   } catch (err) {
     return json({ ok: false, error: String(err) });
@@ -95,6 +97,52 @@ function handleRegistration(body) {
   notify('📝 New event registration: ' + body.name,
     '<b>Event:</b> ' + (body.event || '-') + '<br><b>Name:</b> ' + body.name + '<br><b>Phone:</b> ' + body.phone +
     '<br><b>Email:</b> ' + (body.email || '-') + '<br><b>People coming:</b> ' + (body.people || '-'));
+  return json({ ok: true });
+}
+
+// ---- Donations (public) — log to sheet, email receipt to donor, notify admin ----
+function handleDonation(body) {
+  if (!body.name || !body.email) return json({ ok: false, error: 'Name and email are required.' });
+  var amount = Number(body.amount) || 0;
+  var payId  = body.payment_id || '';
+
+  tab('donation').appendRow([new Date(), body.name, body.email, body.phone || '', amount, payId]);
+
+  // Notify the trust
+  notify('💚 New donation: INR ' + amount + ' from ' + body.name,
+    '<b>Name:</b> ' + body.name + '<br><b>Email:</b> ' + body.email +
+    '<br><b>Phone:</b> ' + (body.phone || '-') +
+    '<br><b>Amount:</b> INR ' + amount + '<br><b>Payment ID:</b> ' + (payId || '-'));
+
+  // Email an acknowledgement / receipt to the donor
+  try {
+    var dateStr = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy');
+    MailApp.sendEmail({
+      to: body.email,
+      name: 'Karisakattu Poove Trust',
+      subject: 'Thank you for your donation — Karisakattu Poove Trust',
+      htmlBody:
+        '<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#222">' +
+          '<h2 style="color:#2e7d32;margin-bottom:4px">Thank you, ' + body.name + '! 🌱</h2>' +
+          '<p>We have received your generous donation to <b>Karisakattu Poove Trust</b>. ' +
+          'Your support helps us plant trees, grow Miyawaki forests, conserve water and uplift ' +
+          'communities across Hosur, Tamil Nadu.</p>' +
+          '<table style="border-collapse:collapse;margin:16px 0;font-size:15px">' +
+            '<tr><td style="padding:6px 14px 6px 0;color:#666">Amount</td>' +
+              '<td style="padding:6px 0"><b>INR ' + amount + '</b></td></tr>' +
+            '<tr><td style="padding:6px 14px 6px 0;color:#666">Payment Reference</td>' +
+              '<td style="padding:6px 0">' + (payId || '-') + '</td></tr>' +
+            '<tr><td style="padding:6px 14px 6px 0;color:#666">Date</td>' +
+              '<td style="padding:6px 0">' + dateStr + '</td></tr>' +
+          '</table>' +
+          '<p>This email is an acknowledgement of your contribution. For a formal 80G tax receipt, ' +
+          'please reply with your full name and PAN.</p>' +
+          '<p style="color:#555;margin-top:20px">With gratitude,<br><b>Karisakattu Poove Trust</b><br>' +
+          'Trust Reg. No. 74/2020 &middot; Hosur, Tamil Nadu</p>' +
+        '</div>'
+    });
+  } catch (e) { /* sheet write already succeeded */ }
+
   return json({ ok: true });
 }
 

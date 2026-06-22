@@ -82,7 +82,7 @@
         <div class="section-head center" style="margin-bottom:22px">
           <span class="kicker" style="justify-content:center">Online &middot; UPI / Card / Wallet / Netbanking</span>
           <h2>Donate online</h2>
-          <p>Enter any amount and donate securely via Razorpay. Instant acknowledgement.</p>
+          <p>Enter an amount (up to ₹20,00,000) and donate securely via Razorpay. A receipt will be emailed to you.</p>
         </div>
         <div class="rzp-amounts">
           <button type="button" class="rzp-chip" data-amt="500">₹500</button>
@@ -91,17 +91,17 @@
           <button type="button" class="rzp-chip" data-amt="5000">₹5,000</button>
         </div>
         <div class="rzp-field">
-          <label for="rzp-amount">Donation amount (₹)</label>
-          <input id="rzp-amount" type="number" min="1" step="1" inputmode="numeric" placeholder="Enter amount" value="1000">
+          <label for="rzp-amount">Donation amount (₹) <span style="color:#c0392b">*</span></label>
+          <input id="rzp-amount" type="number" min="1" max="2000000" step="1" inputmode="numeric" placeholder="Enter amount (max ₹20,00,000)" value="1000">
         </div>
         <div class="rzp-field">
-          <label for="rzp-name">Your name <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-          <input id="rzp-name" type="text" placeholder="Full name" autocomplete="name">
+          <label for="rzp-name">Your name <span style="color:#c0392b">*</span></label>
+          <input id="rzp-name" type="text" placeholder="Full name" autocomplete="name" required>
         </div>
         <div class="rzp-grid">
           <div class="rzp-field">
-            <label for="rzp-email">Email <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
-            <input id="rzp-email" type="email" placeholder="you@example.com" autocomplete="email">
+            <label for="rzp-email">Email <span style="color:#c0392b">*</span></label>
+            <input id="rzp-email" type="email" placeholder="you@example.com" autocomplete="email" required>
           </div>
           <div class="rzp-field">
             <label for="rzp-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
@@ -170,6 +170,9 @@
   //    It starts with "rzp_test_". When you go live, swap it for your "rzp_live_" key.
   var RAZORPAY_KEY = "rzp_test_SJfLbLHmLLbfMM";
 
+  var MAX_AMT = 2000000; // ₹20,00,000 (20 lakh) maximum online donation
+  var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
   var amtInput = document.getElementById("rzp-amount");
   var btn      = document.getElementById("rzp-donate");
   var btnAmt   = document.getElementById("rzp-btn-amt");
@@ -196,9 +199,39 @@
   });
   syncBtn();
 
+  // Save the donation to the Google Sheet backend and email a receipt to the
+  // donor (fire-and-forget). text/plain avoids a CORS preflight to Apps Script.
+  function saveDonation(d) {
+    var cfg = window.KPT_CONFIG || {};
+    if (!cfg.EVENTS_API) return;
+    d.type = "donation";
+    try {
+      fetch(cfg.EVENTS_API, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(d)
+      }).catch(function () {});
+    } catch (e) {}
+  }
+
   btn.addEventListener("click", function () {
-    var amount = currentAmt();
+    var amount  = currentAmt();
+    var nameEl  = document.getElementById("rzp-name");
+    var emailEl = document.getElementById("rzp-email");
+    var name  = (nameEl  && nameEl.value  || "").trim();
+    var email = (emailEl && emailEl.value || "").trim();
+    var phone = ((document.getElementById("rzp-phone") || {}).value || "").trim();
+
+    if (!name) { alert("Please enter your name."); nameEl.focus(); return; }
+    if (!EMAIL_RE.test(email)) {
+      alert("Please enter a valid email address so we can send your receipt.");
+      emailEl.focus(); return;
+    }
     if (amount < 1) { alert("Please enter a donation amount."); amtInput.focus(); return; }
+    if (amount > MAX_AMT) {
+      alert("The maximum online donation is ₹20,00,000. For a larger contribution please contact us.");
+      amtInput.focus(); return;
+    }
     if (RAZORPAY_KEY.indexOf("REPLACE") !== -1) {
       alert("Razorpay key not set yet. Add your test key in donate.html (RAZORPAY_KEY).");
       return;
@@ -211,17 +244,19 @@
       name: "Karisakattu Poove Trust",
       description: "Donation towards tree plantation & community work",
       image: "images/logo-clean.png",
-      prefill: {
-        name:    (document.getElementById("rzp-name")  || {}).value || "",
-        email:   (document.getElementById("rzp-email") || {}).value || "",
-        contact: (document.getElementById("rzp-phone") || {}).value || ""
-      },
+      prefill: { name: name, email: email, contact: phone },
       notes: { purpose: "Donation", trust_reg: "74/2020" },
       theme: { color: "#2e7d32" },
       handler: function (response) {
+        // Log to Google Sheet + email the donor their receipt
+        saveDonation({
+          name: name, email: email, phone: phone,
+          amount: amount, payment_id: response.razorpay_payment_id
+        });
         var note = document.getElementById("rzp-test-note");
         if (note) {
-          note.innerHTML = "✅ Thank you! Payment successful. Reference: <b>" +
+          note.innerHTML = "✅ Thank you, " + name + "! Payment successful. " +
+            "A receipt has been sent to <b>" + email + "</b>. Reference: <b>" +
             response.razorpay_payment_id + "</b>";
           note.style.color = "var(--green-700)";
         }
