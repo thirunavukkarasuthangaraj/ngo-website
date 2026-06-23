@@ -335,7 +335,7 @@ header.site:not(.scrolled) .burger{color:#fff}
 }
 .hero p{color:rgba(255,255,255,.9);font-size:clamp(1.05rem,1.7vw,1.35rem);max-width:560px;margin-bottom:34px}
 .hero-cta{display:flex;flex-wrap:wrap;gap:14px}
-.hero-stats{display:flex;gap:34px;margin-top:54px;flex-wrap:wrap}
+.hero-stats{display:none}
 .hero-stats .hs b{display:block;font-family:var(--ff-display);font-weight:800;font-size:1.9rem;color:#fff;line-height:1}
 .hero-stats .hs span{font-size:.85rem;color:rgba(255,255,255,.7)}
 
@@ -356,7 +356,7 @@ header.site:not(.scrolled) .burger{color:#fff}
 .scroll-ind .mouse{width:24px;height:38px;border:2px solid rgba(255,255,255,.6);border-radius:14px;position:relative}
 .scroll-ind .mouse::after{content:"";position:absolute;top:7px;left:50%;width:4px;height:7px;background:#fff;border-radius:2px;transform:translateX(-50%);animation:wheel 1.6s var(--ease) infinite}
 @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}40%{opacity:1}100%{opacity:0;transform:translate(-50%,12px)}}
-@media (max-width:680px){.hero-stats,.scroll-ind{display:none}}
+@media (max-width:680px){.scroll-ind{display:none}}
 
 /* page hero (inner pages) */
 .page-hero{position:relative;padding:calc(var(--nav-h) + 70px) 0 70px;overflow:hidden;isolation:isolate;text-align:center}
