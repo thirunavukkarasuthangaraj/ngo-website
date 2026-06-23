@@ -324,7 +324,7 @@ header.site:not(.scrolled) .burger{color:#fff}
     linear-gradient(180deg,rgba(6,22,10,.25) 0%,rgba(6,22,10,0) 35%,rgba(6,22,10,.15) 100%),
     linear-gradient(105deg,rgba(7,24,11,.62) 0%,rgba(9,30,13,.34) 45%,rgba(12,40,18,.1) 100%);
 }
-.hero-content{padding:calc(var(--nav-h) + 40px) 0 110px;max-width:760px}
+.hero-content{padding:calc(var(--nav-h) + 90px) 0 40px;max-width:760px}
 .hero .kicker{color:var(--gold-300)}
 .hero .kicker::before{background:var(--gold-300)}
 .hero h1{color:#fff;margin-bottom:14px}
