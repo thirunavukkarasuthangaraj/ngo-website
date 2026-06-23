@@ -29,6 +29,18 @@ function doGet() {
   return json({ ok: true, events: getEvents() });
 }
 
+// ===== RUN THIS ONCE from the editor =====
+// Select "testReceipt" in the toolbar dropdown and click Run.
+// 1) It triggers the Gmail permission prompt — click "Review permissions" > Allow.
+// 2) It sends the real, new HTML receipt to SENDER_EMAIL so you can see the design.
+// If you receive the styled email here, live donations will send the same.
+function testReceipt() {
+  var html = donationReceiptHtml('Test Donor', 1000, 'pay_TEST123',
+    Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy'));
+  sendMail({ to: SENDER_EMAIL, subject: 'TEST — Donation receipt design', htmlBody: html });
+  Logger.log('Test receipt sent to ' + SENDER_EMAIL);
+}
+
 function doPost(e) {
   try {
     var body = JSON.parse(e.postData.contents || '{}');
