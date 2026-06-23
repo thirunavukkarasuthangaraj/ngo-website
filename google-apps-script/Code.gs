@@ -35,10 +35,13 @@ function doGet() {
 // 2) It sends the real, new HTML receipt to SENDER_EMAIL so you can see the design.
 // If you receive the styled email here, live donations will send the same.
 function testReceipt() {
+  // Send to a DIFFERENT inbox than the sender, so it clearly lands in the Inbox
+  // (a mail sent from an address to itself is filed under Sent/All Mail, not Inbox).
+  var TEST_TO = 'thiruna2394@gmail.com';
   var html = donationReceiptHtml('Test Donor', 1000, 'pay_TEST123',
     Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy'));
-  sendMail({ to: SENDER_EMAIL, subject: 'TEST — Donation receipt design', htmlBody: html });
-  Logger.log('Test receipt sent to ' + SENDER_EMAIL);
+  sendMail({ to: TEST_TO, subject: 'TEST — Donation receipt design', htmlBody: html });
+  Logger.log('Test receipt sent to ' + TEST_TO + ' (from alias ' + SENDER_EMAIL + ')');
 }
 
 function doPost(e) {
