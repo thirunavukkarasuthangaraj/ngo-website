@@ -9,6 +9,10 @@
 // ====== CONFIG — change these ======
 var ADMIN_TOKEN  = 'Karisai@2026';            // private password — only needed to create EVENTS
 var NOTIFY_EMAIL = 'karisakattupoovetn@gmail.com';  // who gets emailed on every submission
+var SENDER_EMAIL = 'karisakattupoovetn@gmail.com';  // emails are sent FROM this address
+                                                    // (must be a verified "Send mail as" alias
+                                                    //  in the Google account running this script)
+var SENDER_NAME  = 'Karisakattu Poove Trust';       // display name shown to recipients
 var SHEET_NAME   = 'Events';                        // tab name for events
 // ===================================
 
@@ -119,7 +123,8 @@ function handleDonation(body) {
     var dateStr = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy');
     MailApp.sendEmail({
       to: body.email,
-      name: 'Karisakattu Poove Trust',
+      from: SENDER_EMAIL,
+      name: SENDER_NAME,
       subject: 'Thank you for your donation — Karisakattu Poove Trust',
       htmlBody:
         '<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#222">' +
@@ -148,7 +153,7 @@ function handleDonation(body) {
 
 function notify(subject, html) {
   try {
-    MailApp.sendEmail({ to: NOTIFY_EMAIL, subject: subject,
+    MailApp.sendEmail({ to: NOTIFY_EMAIL, from: SENDER_EMAIL, name: SENDER_NAME, subject: subject,
       htmlBody: html + '<hr><small>Logged in your Karisakattupoove Trust Google Sheet.</small>' });
   } catch (e) { /* sheet write already succeeded */ }
 }
