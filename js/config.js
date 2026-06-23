@@ -5,5 +5,5 @@
    =================================================================== */
 window.KPT_CONFIG = {
   // e.g. "https://script.google.com/macros/s/AKfy....../exec"
-  EVENTS_API: "https://script.google.com/macros/s/AKfycbxUjA3j7RhnAV2MBeUrGTX5sJ2iuLLMPnjdEYdOzQhmR9NuLLAl4ME_4BausKjGsGTQ/exec"
+  EVENTS_API: "https://script.google.com/macros/s/AKfycbxN2WGxhs-dVILB6GECGJjjMHrIC9SA4k7Ai8zh9s8D9d43C494mJssP8a_fae3r6bS/exec"
 };
