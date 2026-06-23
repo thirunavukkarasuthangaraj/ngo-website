@@ -121,10 +121,8 @@ function handleDonation(body) {
   // Email an acknowledgement / receipt to the donor
   try {
     var dateStr = Utilities.formatDate(new Date(), Session.getScriptTimeZone(), 'dd MMM yyyy');
-    MailApp.sendEmail({
+    sendMail({
       to: body.email,
-      from: SENDER_EMAIL,
-      name: SENDER_NAME,
       subject: 'Thank you for your donation — Karisakattu Poove Trust',
       htmlBody:
         '<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#222">' +
@@ -153,9 +151,25 @@ function handleDonation(body) {
 
 function notify(subject, html) {
   try {
-    MailApp.sendEmail({ to: NOTIFY_EMAIL, from: SENDER_EMAIL, name: SENDER_NAME, subject: subject,
+    sendMail({ to: NOTIFY_EMAIL, subject: subject,
       htmlBody: html + '<hr><small>Logged in your Karisakattupoove Trust Google Sheet.</small>' });
   } catch (e) { /* sheet write already succeeded */ }
+}
+
+// Send email FROM the trust alias (SENDER_EMAIL). GmailApp.sendEmail lets us set
+// the "from" to any verified "Send mail as" alias on this account. We only set it
+// when the alias is actually verified; otherwise we fall back to the default
+// address so a receipt always goes out instead of silently failing.
+function sendMail(opts) {
+  var from = '';
+  try {
+    var aliases = GmailApp.getAliases();
+    if (aliases.indexOf(SENDER_EMAIL) !== -1) from = SENDER_EMAIL;
+  } catch (e) { from = ''; }
+
+  var options = { name: SENDER_NAME, htmlBody: opts.htmlBody };
+  if (from) options.from = from;
+  GmailApp.sendEmail(opts.to, opts.subject, '', options);
 }
 
 function tab(type) {
