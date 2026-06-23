@@ -264,6 +264,7 @@
       stroke-width="2">
       <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
     </svg></button>
+  <script src="js/config.js"></script>
   <script src="js/footer.js"></script>
   <script src="js/script.js"></script>
   <script src="js/i18n.js"></script>
@@ -322,6 +323,34 @@
         } catch (e) { }
       }
 
+      // After a successful payment, clear the form and replace the card body
+      // with a clean confirmation message.
+      function showThankYou(name, email, amount, payId) {
+        // Reset the inputs so stale values are not left on screen
+        amtInput.value = "";
+        ["rzp-name", "rzp-email", "rzp-phone"].forEach(function (id) {
+          var el = document.getElementById(id);
+          if (el) el.value = "";
+        });
+        chips.forEach(function (c) { c.classList.remove("active"); });
+        syncBtn();
+
+        var card = btn.closest(".form-card");
+        if (!card) return;
+        card.innerHTML =
+          '<div class="section-head center">' +
+            '<div style="font-size:54px;line-height:1;margin-bottom:10px">🌱</div>' +
+            '<h2 style="color:var(--green-700)">Thank you, ' + name + '!</h2>' +
+            '<p>Your donation of <b>' + fmt(amount) + '</b> was successful. ' +
+            'A receipt has been emailed to <b>' + email + '</b>.</p>' +
+          '</div>' +
+          '<p class="rzp-test-note" style="margin-top:0">Payment reference: <b>' + payId + '</b></p>' +
+          '<div class="center mt-m">' +
+            '<a href="index.html" class="btn btn-primary btn-lg">Back to Home</a>' +
+          '</div>';
+        card.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+
       btn.addEventListener("click", function () {
         var amount = currentAmt();
         var nameEl = document.getElementById("rzp-name");
@@ -361,13 +390,7 @@
               name: name, email: email, phone: phone,
               amount: amount, payment_id: response.razorpay_payment_id
             });
-            var note = document.getElementById("rzp-test-note");
-            if (note) {
-              note.innerHTML = "✅ Thank you, " + name + "! Payment successful. " +
-                "A receipt has been sent to <b>" + email + "</b>. Reference: <b>" +
-                response.razorpay_payment_id + "</b>";
-              note.style.color = "var(--green-700)";
-            }
+            showThankYou(name, email, amount, response.razorpay_payment_id);
           }
         };
 
