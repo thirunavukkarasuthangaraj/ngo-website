@@ -1,6 +1,8 @@
 /* Shared site footer — injected so contact details live in one place.
    Footer links are also present in the page nav and sitemap.xml for SEO. */
 (function () {
+  // Bump this on each release so you can confirm the live site picked up the latest deploy.
+  var SITE_VERSION = "v1.0.1";
   var el = document.getElementById("site-footer");
   if (!el) return;
   el.innerHTML =
@@ -41,7 +43,7 @@
 '      </ul>'+
 '    </div>'+
 '  </div>'+
-'  <div class="footer-bottom"><span>© <span data-year>2025</span> Karisakattu Poove Trust. All rights reserved.</span><span>Made with 🌱 for a greener tomorrow · <a href="contact.html">Privacy Policy</a></span><span>Developed by Thiru · Website queries only: <a href="https://wa.me/916374217724" target="_blank" rel="noopener">WhatsApp 63742 17724</a></span></div>'+
+'  <div class="footer-bottom"><span>© <span data-year>2025</span> Karisakattu Poove Trust. All rights reserved.</span><span>Made with 🌱 for a greener tomorrow · <a href="contact.html">Privacy Policy</a></span><span>Developed by Thiru · Website queries only: <a href="https://wa.me/916374217724" target="_blank" rel="noopener">WhatsApp 63742 17724</a> · <span class="site-version" style="opacity:.7">' + SITE_VERSION + '</span></span></div>'+
 '</div>';
   // Re-bind year + newsletter for the freshly injected markup
   el.querySelectorAll("[data-year]").forEach(function (n) { n.textContent = new Date().getFullYear(); });
