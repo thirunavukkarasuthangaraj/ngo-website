@@ -124,29 +124,84 @@ function handleDonation(body) {
     sendMail({
       to: body.email,
       subject: 'Thank you for your donation — Karisakattu Poove Trust',
-      htmlBody:
-        '<div style="font-family:Arial,Helvetica,sans-serif;max-width:560px;margin:auto;color:#222">' +
-          '<h2 style="color:#2e7d32;margin-bottom:4px">Thank you, ' + body.name + '! 🌱</h2>' +
-          '<p>We have received your generous donation to <b>Karisakattu Poove Trust</b>. ' +
-          'Your support helps us plant trees, grow Miyawaki forests, conserve water and uplift ' +
-          'communities across Hosur, Tamil Nadu.</p>' +
-          '<table style="border-collapse:collapse;margin:16px 0;font-size:15px">' +
-            '<tr><td style="padding:6px 14px 6px 0;color:#666">Amount</td>' +
-              '<td style="padding:6px 0"><b>INR ' + amount + '</b></td></tr>' +
-            '<tr><td style="padding:6px 14px 6px 0;color:#666">Payment Reference</td>' +
-              '<td style="padding:6px 0">' + (payId || '-') + '</td></tr>' +
-            '<tr><td style="padding:6px 14px 6px 0;color:#666">Date</td>' +
-              '<td style="padding:6px 0">' + dateStr + '</td></tr>' +
-          '</table>' +
-          '<p>This email is an acknowledgement of your contribution. For a formal 80G tax receipt, ' +
-          'please reply with your full name and PAN.</p>' +
-          '<p style="color:#555;margin-top:20px">With gratitude,<br><b>Karisakattu Poove Trust</b><br>' +
-          'Trust Reg. No. 74/2020 &middot; Hosur, Tamil Nadu</p>' +
-        '</div>'
+      htmlBody: donationReceiptHtml(body.name, amount, payId, dateStr)
     });
   } catch (e) { /* sheet write already succeeded */ }
 
   return json({ ok: true });
+}
+
+// Format a number with Indian digit grouping, e.g. 150000 -> "1,50,000".
+function formatINR(n) {
+  var s = String(Math.round(Number(n) || 0));
+  var last3 = s.slice(-3);
+  var rest = s.slice(0, -3);
+  if (rest) last3 = ',' + last3;
+  rest = rest.replace(/\B(?=(\d\d)+(?!\d))/g, ',');
+  return rest + last3;
+}
+
+// Branded, email-client-safe HTML receipt (table-based layout, inline styles).
+function donationReceiptHtml(name, amount, payId, dateStr) {
+  var amt = '&#8377;' + formatINR(amount); // ₹ with Indian grouping
+  return '' +
+  '<div style="margin:0;padding:0;background:#f1f5f2">' +
+  '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#f1f5f2;padding:24px 12px">' +
+    '<tr><td align="center">' +
+      '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#ffffff;border-radius:16px;overflow:hidden;font-family:Arial,Helvetica,sans-serif;box-shadow:0 4px 18px rgba(0,0,0,.06)">' +
+        // Header band
+        '<tr><td style="background:#2e7d32;background:linear-gradient(135deg,#2e7d32,#1b5e20);padding:32px 32px 26px;text-align:center">' +
+          '<div style="font-size:40px;line-height:1">&#127793;</div>' +
+          '<div style="color:#ffffff;font-size:22px;font-weight:700;margin-top:8px">Karisakattu Poove Trust</div>' +
+          '<div style="color:#d7ecd8;font-size:13px;margin-top:4px;letter-spacing:.4px">DONATION RECEIPT</div>' +
+        '</td></tr>' +
+        // Greeting
+        '<tr><td style="padding:30px 32px 6px">' +
+          '<h1 style="margin:0 0 10px;color:#1b5e20;font-size:21px">Thank you, ' + name + '! &#127793;</h1>' +
+          '<p style="margin:0;color:#444;font-size:15px;line-height:1.6">We have received your generous donation. Your support helps us plant trees, grow Miyawaki forests, conserve water and uplift communities across Hosur, Tamil Nadu.</p>' +
+        '</td></tr>' +
+        // Amount highlight
+        '<tr><td style="padding:22px 32px 6px">' +
+          '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:#e9f6ea;border:1px solid #cfe9d2;border-radius:12px">' +
+            '<tr><td style="padding:18px 22px;text-align:center">' +
+              '<div style="color:#4b7a4f;font-size:13px;text-transform:uppercase;letter-spacing:.5px">Amount Donated</div>' +
+              '<div style="color:#1b5e20;font-size:32px;font-weight:800;margin-top:4px">' + amt + '</div>' +
+            '</td></tr>' +
+          '</table>' +
+        '</td></tr>' +
+        // Details table
+        '<tr><td style="padding:18px 32px 6px">' +
+          '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="font-size:14px;color:#333;border-collapse:collapse">' +
+            '<tr><td style="padding:10px 0;color:#777;border-bottom:1px solid #eee">Payment Reference</td>' +
+              '<td style="padding:10px 0;text-align:right;font-weight:600;border-bottom:1px solid #eee">' + (payId || '-') + '</td></tr>' +
+            '<tr><td style="padding:10px 0;color:#777;border-bottom:1px solid #eee">Date</td>' +
+              '<td style="padding:10px 0;text-align:right;font-weight:600;border-bottom:1px solid #eee">' + dateStr + '</td></tr>' +
+            '<tr><td style="padding:10px 0;color:#777">Trust Reg. No.</td>' +
+              '<td style="padding:10px 0;text-align:right;font-weight:600">74 / 2020</td></tr>' +
+          '</table>' +
+        '</td></tr>' +
+        // 80G note
+        '<tr><td style="padding:18px 32px 4px">' +
+          '<p style="margin:0;background:#fff8e1;border:1px solid #ffe9a8;border-radius:10px;padding:13px 16px;color:#7a5b00;font-size:13px;line-height:1.6">' +
+          '<b>80G tax receipt:</b> This email acknowledges your contribution. For a formal 80G receipt, simply reply with your full name and PAN.</p>' +
+        '</td></tr>' +
+        // Sign off
+        '<tr><td style="padding:20px 32px 6px">' +
+          '<p style="margin:0;color:#555;font-size:14px;line-height:1.6">With gratitude,<br><b style="color:#1b5e20">Karisakattu Poove Trust</b></p>' +
+        '</td></tr>' +
+        // Footer
+        '<tr><td style="padding:22px 32px 30px;border-top:1px solid #eee;margin-top:10px">' +
+          '<p style="margin:0;color:#8a8a8a;font-size:12px;line-height:1.7">' +
+            'Hosur, Tamil Nadu &middot; Trust Reg. No. 74/2020<br>' +
+            '&#9993; <a href="mailto:karisakattupoovetn@gmail.com" style="color:#2e7d32;text-decoration:none">karisakattupoovetn@gmail.com</a> &nbsp;&middot;&nbsp; ' +
+            '&#9742; <a href="tel:+919629280506" style="color:#2e7d32;text-decoration:none">+91 96292 80506</a><br>' +
+            '&#127760; <a href="https://karisakattupoovetrust.org" style="color:#2e7d32;text-decoration:none">karisakattupoovetrust.org</a>' +
+          '</p>' +
+        '</td></tr>' +
+      '</table>' +
+    '</td></tr>' +
+  '</table>' +
+  '</div>';
 }
 
 function notify(subject, html) {
