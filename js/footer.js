@@ -2,7 +2,7 @@
    Footer links are also present in the page nav and sitemap.xml for SEO. */
 (function () {
   // Bump this on each release so you can confirm the live site picked up the latest deploy.
-  var SITE_VERSION = "v1.0.3";
+  var SITE_VERSION = "v1.0.4";
   var el = document.getElementById("site-footer");
   if (!el) return;
   el.innerHTML =
