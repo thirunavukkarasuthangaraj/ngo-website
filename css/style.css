@@ -890,3 +890,16 @@ body.cta-visible .wa-float{bottom:90px}
 .reg-success .s-ico{width:64px;height:64px;margin:0 auto 14px;border-radius:50%;display:grid;place-items:center;background:var(--green-100);color:var(--green-700)}
 .reg-success .s-ico svg{width:32px;height:32px}
 [data-theme="dark"] .reg-success .s-ico{background:var(--bg-tint);color:var(--green-400)}
+
+/* ---------- WhatsApp Channel band ---------- */
+.wa-channel{display:flex;align-items:center;gap:26px;flex-wrap:wrap;padding:30px 34px;border-radius:var(--r-lg);background:linear-gradient(135deg,#25D366 0%,#128C7E 100%);color:#fff;box-shadow:0 18px 50px rgba(18,140,126,.28)}
+.wa-channel-ico{flex:0 0 auto;width:62px;height:62px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.18)}
+.wa-channel-ico svg{width:34px;height:34px;color:#fff}
+.wa-channel-text{flex:1 1 320px}
+.wa-channel-text .kicker{color:rgba(255,255,255,.85)}
+.wa-channel-text h2{margin:4px 0 8px;color:#fff;font-size:1.7rem}
+.wa-channel-text p{margin:0;color:rgba(255,255,255,.92);max-width:60ch}
+.wa-channel-btn{flex:0 0 auto;background:#fff;color:#128C7E;border:none;font-weight:700}
+.wa-channel-btn svg{width:20px;height:20px;color:#25D366}
+.wa-channel-btn:hover{background:#f4fff9;transform:translateY(-2px)}
+@media(max-width:640px){.wa-channel{padding:26px 22px;text-align:center;justify-content:center}.wa-channel-text{flex-basis:100%}.wa-channel-text p{margin-inline:auto}}
