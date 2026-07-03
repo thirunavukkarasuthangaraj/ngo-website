@@ -913,3 +913,10 @@ body.cta-visible .wa-float{bottom:90px}
 [data-theme="dark"] .pa-card img{background:#fff;border-radius:8px;padding:5px 8px}
 .pa-card img ~ .pl-mono{display:none}
 .pa-name{font-weight:600;color:var(--ink);font-size:.95rem;line-height:1.3}
+
+/* ---------- Press carousel (In the News) ---------- */
+.press-carousel .pc-slide{background:#fff}
+.press-carousel .pc-slide a{display:block}
+.press-carousel .pc-slide img{height:420px;object-fit:contain;background:#fff;padding:10px}
+.press-carousel .pc-slide figcaption{opacity:1;transform:none}
+@media (max-width:560px){.press-carousel .pc-slide img{height:440px}}

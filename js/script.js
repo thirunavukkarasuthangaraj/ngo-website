@@ -273,9 +273,8 @@
     on(sliderEl, "mouseleave", restart);
   }
 
-  /* ---------- Homepage photo carousel ---------- */
-  var pc = $(".photo-carousel");
-  if (pc) {
+  /* ---------- Photo carousels (supports several per page) ---------- */
+  $$(".photo-carousel").forEach(function (pc) {
     var pcTrack = $(".pc-track", pc);
     var pcSlides = $$(".pc-slide", pc);
     var pcDotsBox = $(".pc-dots", pc);
@@ -319,7 +318,7 @@
     pcBuildDots();
     pcGo(0);
     pcStart();
-  }
+  });
 
   /* ---------- Forms: send submission to WhatsApp + show success ----------
      The trust's WhatsApp number (international format, no +, no spaces).
