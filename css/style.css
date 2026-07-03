@@ -903,3 +903,13 @@ body.cta-visible .wa-float{bottom:90px}
 .wa-channel-btn svg{width:20px;height:20px;color:#25D366}
 .wa-channel-btn:hover{background:#f4fff9;transform:translateY(-2px)}
 @media(max-width:640px){.wa-channel{padding:26px 22px;text-align:center;justify-content:center}.wa-channel-text{flex-basis:100%}.wa-channel-text p{margin-inline:auto}}
+
+/* ---------- All partners grid (home: View All Partners) ---------- */
+.partners-all{display:none;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:28px}
+.partners-all.open{display:grid;animation:regIn .3s var(--ease)}
+.pa-card{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px 14px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-md);box-shadow:var(--shadow-sm);text-align:center;transition:.25s}
+.pa-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);border-color:var(--green-400)}
+.pa-card img{height:52px;width:auto;max-width:150px;object-fit:contain}
+[data-theme="dark"] .pa-card img{background:#fff;border-radius:8px;padding:5px 8px}
+.pa-card img ~ .pl-mono{display:none}
+.pa-name{font-weight:600;color:var(--ink);font-size:.95rem;line-height:1.3}
