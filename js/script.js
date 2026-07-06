@@ -459,6 +459,43 @@
   /* ---------- Footer year ---------- */
   $$("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
+  /* ---------- Visitor counter (footer, all pages) ---------- */
+  (function () {
+    var fb = $(".footer-bottom");
+    if (!fb) return;
+    var box = doc.createElement("div");
+    box.className = "visit-counter";
+    box.innerHTML =
+      '<span class="vc-label">' +
+      '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">' +
+      '<path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>' +
+      'Visitors</span><span class="vc-digits" aria-live="polite"></span>';
+    fb.appendChild(box);
+    var digitsEl = box.querySelector(".vc-digits");
+
+    function render(n) {
+      var s = String(Math.max(0, n));
+      while (s.length < 6) s = "0" + s;
+      digitsEl.innerHTML = s.split("").map(function (d) {
+        return '<span class="vc-digit">' + d + "</span>";
+      }).join("");
+    }
+    render(0);
+
+    // Count each browser session once; other page views just read the total.
+    var API = "https://abacus.jasoncameron.dev";
+    var KEY = "/karisakattupoove/site-visits";
+    var counted = false;
+    try { counted = sessionStorage.getItem("kp-visit-counted") === "1"; } catch (e) { }
+    fetch(API + (counted ? "/get" : "/hit") + KEY)
+      .then(function (r) { if (!r.ok) throw new Error(r.status); return r.json(); })
+      .then(function (data) {
+        try { sessionStorage.setItem("kp-visit-counted", "1"); } catch (e) { }
+        render(data.value || 0);
+      })
+      .catch(function () { box.style.display = "none"; });
+  })();
+
   /* ---------- Copy-to-clipboard (donate bank details) ---------- */
   $$("[data-copy]").forEach(function (el) {
     on(el, "click", function () {

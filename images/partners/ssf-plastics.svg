@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 200" role="img" aria-label="SSF Plastics — Progress Through Partnership">
+  <!-- interlocked plus mark -->
+  <g stroke-linecap="round">
+    <path d="M52 62v50" stroke="#f2c440" stroke-width="40"/>
+    <path d="M30 108h44" stroke="#f2c440" stroke-width="40" opacity="0"/>
+    <path d="M88 42v60" stroke="#d54a63" stroke-width="42"/>
+    <path d="M56 96h64" stroke="#d54a63" stroke-width="42" opacity="0"/>
+    <path d="M33 96h38" stroke="#f2c440" stroke-width="40"/>
+    <path d="M120 128h0" stroke="#d54a63" stroke-width="42"/>
+    <path d="M124 108v28" stroke="#f2c440" stroke-width="40"/>
+    <path d="M88 132v26" stroke="#d54a63" stroke-width="42"/>
+  </g>
+  <!-- SSF -->
+  <text x="170" y="122" font-family="'Arial Rounded MT Bold','Nunito','Segoe UI',Arial,sans-serif" font-weight="800" font-size="112" fill="#2e3d5c">SSF</text>
+  <!-- PLASTICS -->
+  <text x="174" y="172" font-family="'Arial Rounded MT Bold','Nunito','Segoe UI',Arial,sans-serif" font-weight="700" font-size="36" letter-spacing="7" fill="#2e3d5c">PLASTICS</text>
+  <!-- tagline -->
+  <g font-family="'Segoe UI',Arial,sans-serif" font-weight="600" font-size="21" letter-spacing="1.5" fill="#5a5a5a">
+    <text x="452" y="118">PROGRESS</text>
+    <text x="452" y="145">THROUGH</text>
+    <text x="452" y="172">PARTNERSHIP</text>
+  </g>
+</svg>

@@ -920,3 +920,10 @@ body.cta-visible .wa-float{bottom:90px}
 .press-carousel .pc-slide img{height:420px;object-fit:contain;background:#fff;padding:10px}
 .press-carousel .pc-slide figcaption{opacity:1;transform:none}
 @media (max-width:560px){.press-carousel .pc-slide img{height:440px}}
+
+/* Visitor counter (footer odometer) */
+.visit-counter{display:flex;align-items:center;justify-content:center;gap:10px;margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);width:100%}
+.visit-counter .vc-label{font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;opacity:.75;display:flex;align-items:center;gap:6px}
+.visit-counter .vc-label svg{width:16px;height:16px}
+.visit-counter .vc-digits{display:flex;gap:3px}
+.visit-counter .vc-digit{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:30px;border-radius:5px;background:rgba(255,255,255,.09);border:1px solid rgba(255,255,255,.14);font-family:var(--ff-display),monospace;font-weight:700;font-size:1.05rem;color:var(--gold,#eab308);text-shadow:0 0 10px rgba(234,179,8,.35)}
