@@ -84,9 +84,13 @@
       '  <div class="ef-cd-box"><span class="n" data-cd="m">--</span><span class="l">Mins</span></div>' +
       '  <div class="ef-cd-box"><span class="n" data-cd="s">--</span><span class="l">Secs</span></div>' +
       '</div>' : '';
+    var poster = ev.image || cfg.FEATURED_EVENT_IMAGE;
+    var art = poster
+      ? '<div class="ef-art has-img"><img src="' + esc(poster) + '" alt="' + esc(ev.title) + ' — event poster"></div>'
+      : '<div class="ef-art" aria-hidden="true"><span class="ef-tree">🌳</span></div>';
     return '' +
-      '<div class="event-feature" data-reveal>' +
-      '  <div class="ef-art" aria-hidden="true"><span class="ef-tree">🌳</span></div>' +
+      '<div class="event-feature' + (poster ? ' has-poster' : '') + '" data-reveal>' +
+      art +
       '  <div class="ef-body">' +
       '    <div class="ef-top"><span class="ef-badge">★ Featured Event</span>' +
       '      <span class="ef-date"><span class="d">' + day + '</span><span class="m">' + mon + '</span></span></div>' +

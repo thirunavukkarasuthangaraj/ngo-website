@@ -733,6 +733,10 @@ header.site:not(.scrolled) .burger{color:#fff}
   .ef-art{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:18px 0 6px}
   .ef-tree{font-size:4rem}
 }
+/* featured card with a real poster image: banner on top, details below */
+.event-feature.has-poster{grid-template-columns:1fr;gap:0}
+.event-feature.has-poster .ef-art{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:0}
+.ef-art.has-img img{display:block;width:100%;height:auto}
 
 /* ===================================================================
    CONTACT
