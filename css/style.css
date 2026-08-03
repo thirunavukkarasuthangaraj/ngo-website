@@ -366,6 +366,12 @@ header.site:not(.scrolled) .burger{color:#fff}
 .page-hero .kicker::before{background:var(--gold-300)}
 .page-hero h1{color:#fff;font-size:clamp(2.4rem,5vw,3.8rem)}
 .page-hero p{color:rgba(255,255,255,.88);max-width:620px;margin:16px auto 0;font-size:1.1rem}
+/* compact hero — used on pages where the first section should be visible immediately (Events) */
+.page-hero.compact{padding:calc(var(--nav-h) + 34px) 0 34px}
+.page-hero.compact h1{font-size:clamp(1.8rem,4vw,2.6rem)}
+.page-hero.compact p{display:none}
+.section.tight-top{padding-top:clamp(30px,4vw,48px)}
+.section.tight-top .section-head{margin-bottom:clamp(20px,3vw,32px)}
 .crumbs{display:flex;gap:8px;justify-content:center;margin-top:22px;color:rgba(255,255,255,.7);font-size:.86rem}
 .crumbs a:hover{color:#fff}
 
