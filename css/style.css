@@ -699,6 +699,35 @@ header.site:not(.scrolled) .burger{color:#fff}
 .event-info .meta svg{width:15px;height:15px}
 @media (max-width:680px){.event-card{grid-template-columns:88px 1fr}.event-card .btn{grid-column:1/-1}}
 
+/* ---------- Featured event banner (nearest upcoming event) ---------- */
+.event-feature{position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:minmax(180px,.8fr) 2fr;align-items:center;gap:10px;color:#fff;border-radius:var(--r-xl);box-shadow:var(--shadow-md)}
+.event-feature::before{content:"";position:absolute;inset:0;z-index:-2;background:linear-gradient(135deg,var(--green-900),var(--green-600))}
+.event-feature::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.12;background-image:radial-gradient(circle,rgba(255,255,255,.7) 1.5px,transparent 1.5px);background-size:34px 34px}
+.ef-art{display:grid;place-items:center;align-self:stretch;background:rgba(255,255,255,.06);border-right:1px solid rgba(255,255,255,.12)}
+.ef-tree{font-size:clamp(4rem,9vw,7.5rem);filter:drop-shadow(0 14px 24px rgba(0,0,0,.35));animation:ef-sway 5s ease-in-out infinite;transform-origin:bottom center}
+@keyframes ef-sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+.ef-body{padding:clamp(26px,4vw,44px)}
+.ef-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:14px}
+.ef-badge{display:inline-flex;align-items:center;gap:8px;padding:7px 15px;border-radius:var(--r-pill);background:var(--gold-500);color:#3a2700;font-size:.8rem;font-weight:700;font-family:var(--ff-display);letter-spacing:.04em;text-transform:uppercase}
+.ef-date{text-align:center;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:var(--r-md);padding:10px 16px;display:inline-flex;flex-direction:column;line-height:1}
+.ef-date .d{font-family:var(--ff-display);font-weight:800;font-size:1.7rem}
+.ef-date .m{font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;color:var(--gold-300)}
+.event-feature h3{color:#fff;font-size:clamp(1.5rem,3vw,2.2rem);margin-bottom:10px}
+.event-feature p{color:rgba(255,255,255,.88);max-width:640px}
+.event-feature .meta{display:flex;flex-wrap:wrap;gap:16px;color:var(--gold-300);font-size:.9rem;font-weight:600;margin-top:14px}
+.event-feature .meta span{display:inline-flex;align-items:center;gap:6px}
+.event-feature .meta svg{width:15px;height:15px}
+.ef-countdown{display:flex;gap:12px;margin-top:22px;flex-wrap:wrap}
+.ef-cd-box{min-width:70px;text-align:center;padding:12px 10px;border-radius:var(--r-md);background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(4px)}
+.ef-cd-box .n{display:block;font-family:var(--ff-display);font-weight:800;font-size:1.7rem;line-height:1;font-variant-numeric:tabular-nums}
+.ef-cd-box .l{display:block;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;margin-top:6px;color:rgba(255,255,255,.75)}
+.ef-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:26px}
+@media (max-width:760px){
+  .event-feature{grid-template-columns:1fr}
+  .ef-art{border-right:none;border-bottom:1px solid rgba(255,255,255,.12);padding:18px 0 6px}
+  .ef-tree{font-size:4rem}
+}
+
 /* ===================================================================
    CONTACT
    =================================================================== */

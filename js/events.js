@@ -66,6 +66,60 @@
       '</div>';
   }
 
+  // Big hero-style banner for the nearest upcoming event, with a live countdown.
+  function featuredCard(ev) {
+    var d = parseDate(ev.date);
+    var day = d ? d.getDate() : "•";
+    var mon = d ? MONTHS[d.getMonth()] : "";
+    var yr = d ? d.getFullYear() : "";
+    var meta = "";
+    var t = fmtTime(ev.time);
+    if (d) meta += '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg> ' + day + ' ' + mon + ' ' + yr + '</span>';
+    if (t) meta += '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg> ' + esc(t) + '</span>';
+    if (ev.location) meta += '<span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> ' + esc(ev.location) + '</span>';
+    var cd = d ? '' +
+      '<div class="ef-countdown" data-countdown="' + d.getTime() + '" aria-label="Countdown to event">' +
+      '  <div class="ef-cd-box"><span class="n" data-cd="d">--</span><span class="l">Days</span></div>' +
+      '  <div class="ef-cd-box"><span class="n" data-cd="h">--</span><span class="l">Hours</span></div>' +
+      '  <div class="ef-cd-box"><span class="n" data-cd="m">--</span><span class="l">Mins</span></div>' +
+      '  <div class="ef-cd-box"><span class="n" data-cd="s">--</span><span class="l">Secs</span></div>' +
+      '</div>' : '';
+    return '' +
+      '<div class="event-feature" data-reveal>' +
+      '  <div class="ef-art" aria-hidden="true"><span class="ef-tree">🌳</span></div>' +
+      '  <div class="ef-body">' +
+      '    <div class="ef-top"><span class="ef-badge">★ Featured Event</span>' +
+      '      <span class="ef-date"><span class="d">' + day + '</span><span class="m">' + mon + '</span></span></div>' +
+      '    <h3>' + esc(ev.title) + '</h3>' +
+      '    <p>' + esc(ev.description) + '</p>' +
+      (meta ? '<div class="meta">' + meta + '</div>' : '') +
+      cd +
+      '    <div class="ef-cta"><button type="button" class="btn btn-gold btn-lg js-register" data-event="' + esc(ev.title) + '">Register Now</button>' +
+      '    <a class="btn btn-white" href="volunteer.html">Volunteer With Us</a></div>' +
+      '  </div>' +
+      '</div>';
+  }
+
+  function startCountdowns() {
+    var els = document.querySelectorAll("[data-countdown]");
+    if (!els.length) return;
+    function pad(n) { return (n < 10 ? "0" : "") + n; }
+    function tick() {
+      els.forEach(function (el) {
+        var left = +el.getAttribute("data-countdown") - Date.now();
+        if (left < 0) left = 0;
+        var s = Math.floor(left / 1000);
+        var map = { d: Math.floor(s / 86400), h: Math.floor(s / 3600) % 24, m: Math.floor(s / 60) % 60, s: s % 60 };
+        Object.keys(map).forEach(function (k) {
+          var box = el.querySelector('[data-cd="' + k + '"]');
+          if (box) box.textContent = k === "d" ? map[k] : pad(map[k]);
+        });
+      });
+    }
+    tick();
+    setInterval(tick, 1000);
+  }
+
   function pastCard(ev) {
     return '<article class="project-card" data-reveal><div class="pc-body"><h3>' + esc(ev.title) + '</h3><p>' + esc(ev.description) + '</p><span class="pill">' + esc(ev.date) + '</span></div></article>';
   }
@@ -99,13 +153,14 @@
       past.sort(function (a, b) { return (parseDate(b.date) || 0) - (parseDate(a.date) || 0); });
 
       upcomingBox.innerHTML = upcoming.length
-        ? upcoming.map(card).join("")
+        ? featuredCard(upcoming[0]) + upcoming.slice(1).map(card).join("")
         : note("No upcoming events right now. Check back soon! 🌱");
       if (pastBox) {
         pastBox.innerHTML = past.length
           ? past.map(pastCard).join("")
           : note("No past events listed yet.");
       }
+      startCountdowns();
       done();
     })
     .catch(function () { upcomingBox.innerHTML = note("Couldn’t load events. Please refresh."); });
