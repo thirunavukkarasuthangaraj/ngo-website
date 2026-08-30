@@ -51,7 +51,7 @@
     '      <button type="button" class="td-chip" data-amt="5000">₹5,000</button>' +
     '    </div>' +
     '    <div class="field"><label for="td-amount">Or enter your own amount (₹)</label>' +
-    '      <input id="td-amount" type="number" min="50" max="2000000" step="1" inputmode="numeric" placeholder="Custom amount (min ₹50)" value="500"></div>' +
+    '      <input id="td-amount" type="number" min="10" max="2000000" step="1" inputmode="numeric" placeholder="Custom amount (min ₹10)" value="500"></div>' +
     '    <div class="field"><label for="td-name">Your name <span class="req">*</span></label>' +
     '      <input id="td-name" type="text" placeholder="Full name" autocomplete="name"></div>' +
     '    <div class="td-grid">' +
@@ -163,7 +163,7 @@
     msg.style.color = "var(--gold-600)";
     if (!name) { msg.textContent = "Please enter your name."; modal.querySelector("#td-name").focus(); return; }
     if (!EMAIL_RE.test(email)) { msg.textContent = "Please enter a valid email for your receipt."; modal.querySelector("#td-email").focus(); return; }
-    if (amount < 50) { msg.textContent = "Minimum donation is ₹50."; amtInput.focus(); return; }
+    if (amount < 10) { msg.textContent = "Minimum donation is ₹10."; amtInput.focus(); return; }
     if (amount > MAX_AMT) { msg.textContent = "Maximum online donation is ₹20,00,000. Please contact us for larger gifts."; amtInput.focus(); return; }
     if (!RZP_KEY) { msg.textContent = "Payments are not configured yet. Please try the Donate page."; return; }
 

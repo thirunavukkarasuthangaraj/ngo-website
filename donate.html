@@ -186,8 +186,8 @@
             </div>
             <div class="rzp-field">
               <label for="rzp-amount">Donation amount (₹) <span style="color:#c0392b">*</span></label>
-              <input id="rzp-amount" type="number" min="50" max="2000000" step="1" inputmode="numeric"
-                placeholder="Enter amount (min ₹50, max ₹20,00,000)" value="1000">
+              <input id="rzp-amount" type="number" min="10" max="2000000" step="1" inputmode="numeric"
+                placeholder="Enter amount (min ₹10, max ₹20,00,000)" value="1000">
             </div>
             <div class="rzp-field">
               <label for="rzp-name">Your name <span style="color:#c0392b">*</span></label>
@@ -372,7 +372,7 @@
           alert("Please enter a valid email address so we can send your receipt.");
           emailEl.focus(); return;
         }
-        if (amount < 50) { alert("The minimum online donation is ₹50."); amtInput.focus(); return; }
+        if (amount < 10) { alert("The minimum online donation is ₹10."); amtInput.focus(); return; }
         if (amount > MAX_AMT) {
           alert("The maximum online donation is ₹20,00,000. For a larger contribution please contact us.");
           amtInput.focus(); return;
