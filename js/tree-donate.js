@@ -38,10 +38,11 @@
     '<div class="reg-dialog td-dialog" role="dialog" aria-modal="true" aria-label="Plant a tree donation">' +
     '  <button type="button" class="reg-close" aria-label="Close">&times;</button>' +
     '  <div class="td-body">' +
+    '    <div class="td-hero" aria-hidden="true"><img src="images/gallery/kid-planting.jpg" alt="A child planting a tree sapling"></div>' +
     '    <div class="td-head">' +
     '      <span class="td-badge">🌳 Plant a Tree</span>' +
     '      <h3 class="reg-title">Grow a forest with ₹500</h3>' +
-    '      <p class="td-sub">₹50 plants one tree. Your gift becomes roots, shade and clean air for generations. Choose an amount below.</p>' +
+    '      <p class="td-sub">₹50 plants one tree. Choose an amount to grow a forest.</p>' +
     '    </div>' +
     '    <div class="td-amounts">' +
     '      <button type="button" class="td-chip active" data-amt="500">₹500</button>' +
@@ -50,7 +51,7 @@
     '      <button type="button" class="td-chip" data-amt="5000">₹5,000</button>' +
     '    </div>' +
     '    <div class="field"><label for="td-amount">Or enter your own amount (₹)</label>' +
-    '      <input id="td-amount" type="number" min="1" max="2000000" step="1" inputmode="numeric" placeholder="Custom amount" value="500"></div>' +
+    '      <input id="td-amount" type="number" min="50" max="2000000" step="1" inputmode="numeric" placeholder="Custom amount (min ₹50)" value="500"></div>' +
     '    <div class="field"><label for="td-name">Your name <span class="req">*</span></label>' +
     '      <input id="td-name" type="text" placeholder="Full name" autocomplete="name"></div>' +
     '    <div class="td-grid">' +
@@ -170,7 +171,7 @@
     msg.style.color = "var(--gold-600)";
     if (!name) { msg.textContent = "Please enter your name."; modal.querySelector("#td-name").focus(); return; }
     if (!EMAIL_RE.test(email)) { msg.textContent = "Please enter a valid email for your receipt."; modal.querySelector("#td-email").focus(); return; }
-    if (amount < 1) { msg.textContent = "Please choose or enter an amount."; amtInput.focus(); return; }
+    if (amount < 50) { msg.textContent = "Minimum donation is ₹50."; amtInput.focus(); return; }
     if (amount > MAX_AMT) { msg.textContent = "Maximum online donation is ₹20,00,000. Please contact us for larger gifts."; amtInput.focus(); return; }
     if (!RZP_KEY) { msg.textContent = "Payments are not configured yet. Please try the Donate page."; return; }
 
