@@ -1018,7 +1018,7 @@ body.cta-visible .wa-float{bottom:90px}
 /* ===================================================================
    Full-size Independence-Day banner (homepage) — Mission Green Hosur
    =================================================================== */
-.mgh-banner{position:relative;width:100%;min-height:clamp(480px,64vh,640px);display:flex;align-items:center;overflow:hidden;color:#f2fbf3}
+.mgh-banner{position:relative;width:100%;min-height:clamp(600px,86vh,900px);display:flex;align-items:center;overflow:hidden;color:#f2fbf3;background:var(--green-900)}
 .mgh-banner .mgh-bg{position:absolute;inset:0;z-index:0}
 .mgh-banner .mgh-bg img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 1.4s ease;transform:scale(1.04)}
 .mgh-banner .mgh-bg img.on{opacity:1}
@@ -1030,18 +1030,18 @@ body.cta-visible .wa-float{bottom:90px}
   box-shadow:0 0 24px rgba(0,0,0,.35)}
 .mgh-banner .mgh-flag::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;transform:translate(-50%,-50%);
   border-radius:50%;border:1.4px solid #0a3d91;box-shadow:0 0 0 1px rgba(255,255,255,.6)}
-.mgh-banner .mgh-inner{position:relative;z-index:3;display:grid;grid-template-columns:1.18fr .82fr;gap:36px;align-items:center;
+.mgh-banner .mgh-inner{position:relative;z-index:3;width:100%;display:grid;grid-template-columns:1.18fr .82fr;gap:36px;align-items:center;
   padding-top:56px;padding-bottom:56px}
 .mgh-eyebrow{display:inline-flex;align-items:center;gap:9px;padding:8px 16px;border-radius:var(--r-pill);
   background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-family:var(--ff-display);font-weight:600;
   font-size:.82rem;letter-spacing:.03em;text-transform:uppercase;color:#eafcef}
 .mgh-title{margin:18px 0 0;color:#fff;font-family:var(--ff-display);font-weight:800;letter-spacing:-.02em;
-  font-size:clamp(2rem,4.6vw,3.4rem);line-height:1.06;text-wrap:balance}
+  font-size:clamp(2.3rem,5.4vw,4rem);line-height:1.05;text-wrap:balance}
 .mgh-title .mgh-num{background:linear-gradient(180deg,#ffe08a,var(--gold-500) 55%,#f08a00);-webkit-background-clip:text;background-clip:text;color:transparent;font-variant-numeric:tabular-nums;font-size:1.12em}
 .mgh-lede{margin:16px 0 0;max-width:52ch;color:#dcefe0;font-size:1.05rem}
 .mgh-banner .ah-partners{margin-top:20px}
 .mgh-cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px}
-@media(max-width:860px){.mgh-banner{min-height:auto}.mgh-banner .mgh-inner{grid-template-columns:1fr;gap:26px;padding-top:40px;padding-bottom:40px}}
+@media(max-width:860px){.mgh-banner{min-height:82vh}.mgh-banner .mgh-inner{grid-template-columns:1fr;gap:26px;padding-top:44px;padding-bottom:44px}}
 
 .td-dialog{max-width:460px;padding:26px 26px 22px}
 .td-head{text-align:center;margin-bottom:18px}
