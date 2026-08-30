@@ -46,7 +46,7 @@ NGO based in Hosur, Krishnagiri District, Tamil Nadu, working since 2019.
 
 We plant trees, create dense native Miyawaki forests, conserve water through
 pond and lake revival, and run education, food and welfare programmes for
-rural communities. We have grown 25+ Miyawaki forests and over 72,000 trees
+rural communities. We have grown 26+ Miyawaki forests and over 97,000 trees
 and saplings with the help of volunteers, farmers, schools and CSR partners.
 
 Honoured with the Government of Tamil Nadu "Green Champion Award 2023".
@@ -112,7 +112,7 @@ be part of growing a greener Hosur. karisakattupoovetrust.org/events.html
 
 **Post 3 — Impact**
 ```
-🌳 72,000+ trees · 25+ Miyawaki forests · Green Champion Award 2023.
+🌳 97,000+ trees · 26+ Miyawaki forests · Green Champion Award 2023.
 Help us plant the next forest — karisakattupoovetrust.org/donate.html
 ```
 

@@ -52,6 +52,14 @@
     "Every Miyawaki forest, on record": "ஒவ்வொரு மியாவாகி காடும், பதிவில்",
     "Meet the Founder": "நிறுவனரை சந்திக்கவும்", "Our impact so far": "இதுவரை எங்கள் தாக்கம்",
     "Milestones that grew us": "எங்களை வளர்த்த மைல்கற்கள்",
+    "Mission Green Hosur": "மிஷன் கிரீன் ஓசூர்",
+    "+25,000 trees": "+25,000 மரங்கள்",
+    "+25,000 planted in 2026": "2026-ல் +25,000 நடப்பட்டது",
+    "72,000 through 2025 · +25,000 in 2026": "2025 வரை 72,000 · 2026-ல் +25,000",
+    "Mission Green Hosur — 25,000 trees added in a single day with CREDAI Hosur, Global Calcium and Kansai Nerolac. Total grew from 72,000 to 97,000.":
+      "மிஷன் கிரீன் ஓசூர் — CREDAI ஓசூர், Global Calcium மற்றும் Kansai Nerolac உடன் ஒரே நாளில் 25,000 மரங்கள். மொத்தம் 72,000-லிருந்து 97,000 ஆனது.",
+    "25,000 trees in a single day with CREDAI Hosur, Global Calcium and Kansai Nerolac — honoured by the Hosur City Municipal Corporation.":
+      "CREDAI ஓசூர், Global Calcium மற்றும் Kansai Nerolac உடன் ஒரே நாளில் 25,000 மரங்கள் — ஓசூர் மாநகராட்சியால் கௌரவிக்கப்பட்டது.",
     "From barren land to living forests": "தரிசு நிலத்திலிருந்து உயிர்க்காடுகள் வரை",
     "Growing nature, nurturing people": "இயற்கையை வளர்த்து, மக்களை வளர்க்கிறோம்",
     "Small hands, big forests": "சிறிய கைகள், பெரிய காடுகள்",
