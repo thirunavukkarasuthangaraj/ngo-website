@@ -8,5 +8,8 @@ window.KPT_CONFIG = {
   EVENTS_API: "https://script.google.com/macros/s/AKfycbyEkhZj32sO-aO4tye2VrQj4bN9U9PRMV6M4fUBIoqGF4jZQ58F8GqQ9DSCsc3LjjU/exec",
   // Poster shown inside the featured (nearest upcoming) event card on the
   // Events page, and used as the page's social-share image.
-  FEATURED_EVENT_IMAGE: "images/event-banner-aug15.jpg"
+  FEATURED_EVENT_IMAGE: "images/event-banner-aug15.jpg",
+  // Razorpay key — shared by the donate page and the "Plant a Tree" popup.
+  // Swap the rzp_live_ key here if it ever changes (one place, both places update).
+  RAZORPAY_KEY: "rzp_live_T50zAZykTr9Rhq"
 };

@@ -51,7 +51,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=112">
+  <link rel="stylesheet" href="css/style.css?v=117">
   <style>
     /* ===== About photo — cinematic reveal (fade in + slow zoom) ===== */
     .reveal-photo {
@@ -261,6 +261,55 @@
       </div>
     </section>
 
+    <!-- ============ 15 AUG 2026 — MISSION GREEN HOSUR BANNER (full-size) ============ -->
+    <section class="mgh-banner" aria-label="15 August 2026 — Mission Green Hosur">
+      <div class="mgh-bg" aria-hidden="true">
+        <img src="images/forest-feature.jpg" alt="" class="on">
+        <img src="images/gallery/neralatti.jpg" alt="" loading="lazy">
+        <img src="images/gallery/ssf25k.jpg" alt="" loading="lazy">
+        <img src="images/gallery/gail.jpg" alt="" loading="lazy">
+        <img src="images/gallery/kid-planting.jpg" alt="" loading="lazy">
+      </div>
+      <div class="mgh-scrim" aria-hidden="true"></div>
+      <div class="mgh-flag" aria-hidden="true"></div>
+      <div class="container mgh-inner">
+        <div data-reveal>
+          <span class="mgh-eyebrow">🇮🇳 15 August 2026 · 80th Independence Day · Hosur</span>
+          <h2 class="mgh-title">Mission Green Hosur — <span class="mgh-num" data-count="25000">0</span> trees in a single day</h2>
+          <p class="mgh-lede">On Independence Day, Karisakattu Poove Trust joined hands with CREDAI Hosur, Global Calcium and Kansai Nerolac to plant 25,000 native Miyawaki saplings across Hosur — dense urban forests for a greener tomorrow.</p>
+          <div class="ah-partners">
+            <span class="ah-chip"><b>CREDAI Hosur</b> 10,000</span>
+            <span class="ah-chip"><b>Global Calcium</b> 10,000</span>
+            <span class="ah-chip"><b>Kansai Nerolac</b> 5,000</span>
+          </div>
+          <div class="mgh-cta">
+            <a href="gallery.html" class="btn btn-gold btn-lg">See the full album →</a>
+            <a href="donate.html" class="btn btn-white btn-lg">Donate a Tree</a>
+          </div>
+        </div>
+        <div class="ah-recognition" data-reveal data-delay="1">
+          <span class="ah-rec-label">★ Awards &amp; Recognition</span>
+          <div class="ah-rec-list">
+            <div class="ah-rec-card">
+              <img src="images/award-green-champion.jpg" alt="Green Champion Award 2023, Government of Tamil Nadu" loading="lazy">
+              <div><span class="rc-t">Green Champion Award</span><span class="rc-s">Government of Tamil Nadu</span></div>
+              <span class="rc-badge">2023</span>
+            </div>
+            <div class="ah-rec-card">
+              <img src="images/gallery/aug15-2026/municipal-award-plaque.jpg" alt="Hosur City Municipal Corporation CSR award to Karisakattu Poove Trust" loading="lazy">
+              <div><span class="rc-t">CSR Contribution Award</span><span class="rc-s">Hosur City Municipal Corporation</span></div>
+              <span class="rc-badge">2026</span>
+            </div>
+            <div class="ah-rec-card">
+              <img src="images/gallery/aug15-2026/certificate-appreciation.jpg" alt="Certificate of Appreciation — 80th Independence Day 2026" loading="lazy">
+              <div><span class="rc-t">Certificate of Appreciation</span><span class="rc-s">80th Independence Day, Hosur</span></div>
+              <span class="rc-badge">2026</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ============ GALLERY PREVIEW ============ -->
     <section class="section soft">
       <div class="container">
@@ -276,8 +325,24 @@
             </svg></button>
           <div class="pc-viewport">
             <div class="pc-track">
+              <figure class="pc-slide"><img src="images/gallery/aug15-2026/trophy-handover.jpg"
+                  alt="CREDAI Miyawaki memento presented to Karisakattu Poove Trust on 15 August 2026">
+                <figcaption>Mission Green Hosur &middot; 25,000 trees &middot; 15 August 2026</figcaption>
+              </figure>
+              <figure class="pc-slide"><img src="images/gallery/aug15-2026/global-calcium-board.jpg"
+                  alt="Global Calcium 10,000 sapling Miyawaki forest, Kalkeri Lake" loading="lazy">
+                <figcaption>Global Calcium &mdash; 10,000 Miyawaki saplings &middot; Kalkeri Lake</figcaption>
+              </figure>
+              <figure class="pc-slide"><img src="images/gallery/aug15-2026/credai-miyawaki-board.jpg"
+                  alt="CREDAI Hosur Miyawaki Urban Forest Initiative" loading="lazy">
+                <figcaption>CREDAI Hosur &mdash; Miyawaki Urban Forest Initiative</figcaption>
+              </figure>
+              <figure class="pc-slide"><img src="images/gallery/aug15-2026/chief-guests.jpg"
+                  alt="Chief guests and dignitaries at Mission Green Hosur" loading="lazy">
+                <figcaption>Chief guests &amp; dignitaries &middot; Independence Day 2026</figcaption>
+              </figure>
               <figure class="pc-slide"><img src="images/banner-image/2019-seed.jpeg"
-                  alt="Volunteers with the first palm seed collection in 2019">
+                  alt="Volunteers with the first palm seed collection in 2019" loading="lazy">
                 <figcaption>Where it all began &mdash; palm seed collection, 2019</figcaption>
               </figure>
               <figure class="pc-slide"><img src="images/banner-image/treeplant-mayur.jpeg"
@@ -358,6 +423,7 @@
             </svg></a></div>
       </div>
     </section>
+
 
     <!-- ============ IMPACT ============ -->
     <section class="section tight" aria-label="Our impact">
@@ -977,6 +1043,21 @@
   <script src="js/home-events.js"></script>
   <script src="js/register.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/tree-donate.js?v=1"></script>
+  <script>
+    /* Mission Green Hosur banner — rotating background slideshow */
+    (function () {
+      var imgs = document.querySelectorAll('.mgh-bg img');
+      if (imgs.length < 2) return;
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches) return;
+      var i = 0;
+      setInterval(function () {
+        imgs[i].classList.remove('on');
+        i = (i + 1) % imgs.length;
+        imgs[i].classList.add('on');
+      }, 4000);
+    })();
+  </script>
   <script src="js/i18n.js"></script>
 </body>
 
