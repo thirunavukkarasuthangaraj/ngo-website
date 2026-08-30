@@ -3,3 +3,8 @@
 /OUR WORKS/
 _extract.txt
 google-apps-script/Code.gs
+
+# Private / sensitive — kept local only (legal docs: Trust Deed, PAN/FORM 10AC, GST RC,
+# registration cert, member details, letterpads) and raw event source photos.
+images/filess/
+images/events/
