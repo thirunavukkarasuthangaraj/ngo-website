@@ -126,15 +126,7 @@
     if (e.key === "Escape" && modal.classList.contains("open")) close();
   });
 
-  // Auto-open, centered, once per day when a visitor lands.
-  (function autoOpen() {
-    try {
-      var today = new Date().toISOString().slice(0, 10);
-      if (localStorage.getItem(SEEN_KEY) === today) return;
-      localStorage.setItem(SEEN_KEY, today);
-    } catch (e) { /* private mode — just show it */ }
-    setTimeout(open, 1200);
-  })();
+  // Do not auto-open on page load — header Donate + this button are enough.
 
   // ---- Razorpay: load on demand ----
   function ensureRazorpay(cb) {

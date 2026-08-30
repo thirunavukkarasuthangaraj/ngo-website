@@ -102,6 +102,9 @@
     // In the News (home)
     "In the News": "செய்திகளில்",
     "Featured in the press": "பத்திரிகைகளில் இடம்பெற்றோம்",
+    "Mission Green Hosur — 25,000 trees in a single day": "மிஷன் கிரீன் ஓசூர் — ஒரே நாளில் 25,000 மரங்கள்",
+    "An Independence Day drive with CREDAI Hosur, Global Calcium and Kansai Nerolac — honoured by the Hosur City Municipal Corporation.":
+      "CREDAI ஓசூர், Global Calcium மற்றும் Kansai Nerolac உடன் சுதந்திர தின நடவு — ஓசூர் மாநகராட்சியால் கௌரவிக்கப்பட்டது.",
     "Our green mission has been recognised by leading media for its impact across Hosur and Krishnagiri.":
       "ஓசூர் மற்றும் கிருஷ்ணகிரி முழுவதும் எங்கள் பசுமைப் பணிக்காக முன்னணி ஊடகங்களால் அங்கீகரிக்கப்பட்டுள்ளோம்.",
     // Our Story (about)

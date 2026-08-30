@@ -13,10 +13,18 @@
   var $$ = function (s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); };
 
   /* ---------- Loader ---------- */
-  window.addEventListener("load", function () {
+  (function hideLoader() {
     var l = $("#loader");
-    if (l) setTimeout(function () { l.classList.add("done"); }, 350);
-  });
+    if (!l) return;
+    var done = false;
+    function finish() {
+      if (done) return;
+      done = true;
+      l.classList.add("done");
+    }
+    window.addEventListener("load", function () { setTimeout(finish, 200); });
+    setTimeout(finish, 1600);
+  })();
 
   /* ---------- Theme (persisted) ---------- */
   var THEME_KEY = "kpt-theme";
@@ -119,6 +127,8 @@
 
   /* ---------- Animated counters ---------- */
   function animateCount(el) {
+    if (el.getAttribute("data-counted") === "1") return;
+    el.setAttribute("data-counted", "1");
     var target = parseFloat(el.getAttribute("data-count")) || 0;
     var dec = (el.getAttribute("data-count").indexOf(".") > -1) ? 1 : 0;
     var dur = 1800, start = null;
@@ -139,8 +149,11 @@
       entries.forEach(function (en) {
         if (en.isIntersecting) { animateCount(en.target); cio.unobserve(en.target); }
       });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.15, rootMargin: "0px 0px -10% 0px" });
     counters.forEach(function (el) { cio.observe(el); });
+    setTimeout(function () {
+      counters.forEach(function (el) { animateCount(el); });
+    }, 900);
   } else {
     counters.forEach(animateCount);
   }
@@ -170,7 +183,7 @@
   var leafBox = $(".leaves");
   if (leafBox && !matchMedia("(prefers-reduced-motion:reduce)").matches) {
     var leafSVG = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 8C8 10 5.9 16.17 3.82 21.34l1.89.66.95-2.3c.48.17.98.3 1.34.3C19 20 22 3 22 3c-1 2-8 2.25-13 3.25S2 11.5 2 13.5s1.75 3.75 1.75 3.75C7 8 17 8 17 8z"/></svg>';
-    for (var i = 0; i < 12; i++) {
+    for (var i = 0; i < 7; i++) {
       var leaf = doc.createElement("span");
       leaf.className = "leaf";
       leaf.innerHTML = leafSVG;

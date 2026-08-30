@@ -51,7 +51,7 @@
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
   <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=122">
+  <link rel="stylesheet" href="css/style.css?v=124">
   <style>
     /* ===== About photo — cinematic reveal (fade in + slow zoom) ===== */
     .reveal-photo {
@@ -172,7 +172,7 @@
 </script>
 </head>
 
-<body>
+<body class="home">
 
   <!-- ============ LOADER ============ -->
   <div id="loader">
@@ -223,7 +223,7 @@
     <section class="hero">
       <div class="hero-bg">
         <!-- Seed → sapling → tree → forest growth stages, illustrating the trust's mission. -->
-        <img src="images/hero-growth.png" alt="A seed growing into a sapling, a young tree, and a full forest with roots — the journey of Karisakattu Poove Trust">
+        <img src="images/hero-growth.png" alt="A seed growing into a sapling, a young tree, and a full forest with roots — the journey of Karisakattu Poove Trust" fetchpriority="high">
       </div>
       <div class="leaves"></div>
       <div class="container">
@@ -249,156 +249,9 @@
               Donate Now
             </a>
           </div>
-          <div class="hero-stats">
-            <div class="hs"><b><span data-count="72000">0</span>+</b><span>Trees &amp; Saplings</span></div>
-            <div class="hs"><b><span data-count="25">0</span></b><span>Miyawaki Forests</span></div>
-            <div class="hs"><b><span data-count="15">0</span>+</b><span>CSR &amp; Govt Partners</span></div>
-          </div>
         </div>
       </div>
-      <div class="scroll-ind"><span>Scroll</span>
-        <div class="mouse"></div>
-      </div>
     </section>
-
-    <!-- ============ BANNER TITLE ============ -->
-    <div class="container" style="padding-top:clamp(52px,7vw,96px)">
-      <div class="section-head center" data-reveal>
-        <span class="kicker" style="justify-content:center">Awards &amp; Milestones · 15 August 2026</span>
-        <h2>Mission Green Hosur — 25,000 Trees in a Single Day</h2>
-        <p>An Independence Day drive with CREDAI Hosur, Global Calcium &amp; Kansai Nerolac — honoured by the Hosur City Municipal Corporation.</p>
-      </div>
-    </div>
-
-    <!-- ============ MISSION GREEN HOSUR — IMAGE BANNER SLIDESHOW ============ -->
-    <section class="hero-slideshow" aria-label="Mission Green Hosur — recent activity, 15 August 2026">
-      <figure class="on"><img src="images/gallery/aug15-2026/trophy-handover.jpg" alt="Mission Green Hosur — CREDAI Miyawaki memento, 15 August 2026"></figure>
-      <figure><img src="images/gallery/gail.jpg" alt="Plantation drive with volunteers" loading="lazy"></figure>
-      <figure><img src="images/gallery/aug15-2026/global-calcium-board.jpg" alt="Global Calcium 10,000 sapling Miyawaki forest, Kalkeri Lake" loading="lazy"></figure>
-      <figure><img src="images/gallery/neralatti.jpg" alt="Miyawaki plantation drive at Neralatti" loading="lazy"></figure>
-      <figure><img src="images/gallery/aug15-2026/credai-miyawaki-board.jpg" alt="CREDAI Hosur Miyawaki Urban Forest Initiative" loading="lazy"></figure>
-      <figure><img src="images/gallery/kid-planting.jpg" alt="A child planting a sapling" loading="lazy"></figure>
-      <figure><img src="images/gallery/aug15-2026/chief-guests.jpg" alt="Chief guests and dignitaries at Mission Green Hosur" loading="lazy"></figure>
-      <figure><img src="images/gallery/ssf25k.jpg" alt="25,000-sapling Miyawaki forest" loading="lazy"></figure>
-      <button class="hs-nav hs-prev" type="button" aria-label="Previous image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <button class="hs-nav hs-next" type="button" aria-label="Next image"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
-      <div class="hs-dots" aria-hidden="true"></div>
-    </section>
-
-    <!-- ============ GALLERY PREVIEW ============ -->
-    <section class="section soft">
-      <div class="container">
-        <div class="section-head center" data-reveal>
-          <span class="kicker">Moments of Impact</span>
-          <h2>From our gallery</h2>
-          <p>Glimpses of plantation drives, smiling faces and forests taking root.</p>
-        </div>
-        <div class="home-slider photo-carousel" data-reveal>
-          <button class="he-nav he-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></button>
-          <div class="pc-viewport">
-            <div class="pc-track">
-              <figure class="pc-slide"><img src="images/gallery/aug15-2026/trophy-handover.jpg"
-                  alt="CREDAI Miyawaki memento presented to Karisakattu Poove Trust on 15 August 2026">
-                <figcaption>Mission Green Hosur &middot; 25,000 trees &middot; 15 August 2026</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/aug15-2026/global-calcium-board.jpg"
-                  alt="Global Calcium 10,000 sapling Miyawaki forest, Kalkeri Lake" loading="lazy">
-                <figcaption>Global Calcium &mdash; 10,000 Miyawaki saplings &middot; Kalkeri Lake</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/aug15-2026/credai-miyawaki-board.jpg"
-                  alt="CREDAI Hosur Miyawaki Urban Forest Initiative" loading="lazy">
-                <figcaption>CREDAI Hosur &mdash; Miyawaki Urban Forest Initiative</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/aug15-2026/chief-guests.jpg"
-                  alt="Chief guests and dignitaries at Mission Green Hosur" loading="lazy">
-                <figcaption>Chief guests &amp; dignitaries &middot; Independence Day 2026</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/2019-seed.jpeg"
-                  alt="Volunteers with the first palm seed collection in 2019" loading="lazy">
-                <figcaption>Where it all began &mdash; palm seed collection, 2019</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/treeplant-mayur.jpeg"
-                  alt="Volunteers and officials at a tree plantation drive" loading="lazy">
-                <figcaption>Tree plantation drive with volunteers &amp; officials</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/colecter1.jpeg"
-                  alt="District Collector launching a Miyawaki plantation at Pantharakuttai" loading="lazy">
-                <figcaption>District Collector launches Miyawaki plantation &middot; Pantharakuttai</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/school1.jpeg"
-                  alt="Sapling distribution and prize day at Kamarajar School" loading="lazy">
-                <figcaption>Sapling distribution &amp; prize day &middot; Kamarajar School</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/treeplant.jpeg"
-                  alt="Palm seed sowing festival near a Hosur lake" loading="lazy">
-                <figcaption>Palm seed sowing festival &middot; Hosur</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/banner-image/school2.jpeg"
-                  alt="Environmental awareness session for school students" loading="lazy">
-                <figcaption>Environmental awareness session for students</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/ola2.jpg" alt="OLA Miyawaki forest after 6 months"
-                  loading="lazy">
-                <figcaption>OLA Miyawaki forest after 6 months &middot; Pochampalli</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/gail.jpg" alt="GAIL India plantation drive"
-                  loading="lazy">
-                <figcaption>GAIL India plantation drive &middot; Kumudepalli</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/ssf25k.jpg" alt="25,000-sapling Miyawaki forest"
-                  loading="lazy">
-                <figcaption>25,000-sapling Miyawaki forest &middot; Pantharakuttai</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/kid-planting.jpg" alt="School child planting a sapling"
-                  loading="lazy">
-                <figcaption>Little hands, big future &middot; School plantation</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/green.jpg" alt="A thriving Miyawaki canopy"
-                  loading="lazy">
-                <figcaption>A thriving Miyawaki canopy</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/volunteers-women.jpg"
-                  alt="Volunteers at a plantation drive" loading="lazy">
-                <figcaption>Our volunteers in action</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/veg.jpg" alt="Vegetable garden at a girls school"
-                  loading="lazy">
-                <figcaption>Vegetable garden &middot; Kamaraj Nagar Girls School</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/ola1.jpg" alt="OLA Future Factory Miyawaki"
-                  loading="lazy">
-                <figcaption>OLA Future Factory Miyawaki &middot; SIPCOT</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/blood-donation.jpg" alt="Blood donation camp"
-                  loading="lazy">
-                <figcaption>Blood donation camp</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/drawing-competition.jpg"
-                  alt="Children's drawing competition" loading="lazy">
-                <figcaption>Children&rsquo;s drawing competition</figcaption>
-              </figure>
-              <figure class="pc-slide"><img src="images/gallery/lake.jpg" alt="Forest by Bedrapalli Lake"
-                  loading="lazy">
-                <figcaption>A forest by Bedrapalli Lake</figcaption>
-              </figure>
-            </div>
-          </div>
-          <button class="he-nav he-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" fill="none"
-              stroke="currentColor" stroke-width="2">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></button>
-          <div class="pc-dots" role="tablist" aria-label="Gallery slides"></div>
-        </div>
-        <div class="center mt-l" data-reveal><a href="gallery.html" class="btn btn-ghost btn-lg">View Full Gallery
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></a></div>
-      </div>
-    </section>
-
 
     <!-- ============ IMPACT ============ -->
     <section class="section tight" aria-label="Our impact">
@@ -446,6 +299,27 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED STORY ============ -->
+    <section class="section">
+      <div class="container">
+        <article class="spotlight" data-reveal>
+          <div class="spotlight-media">
+            <img src="images/gallery/aug15-2026/trophy-handover.jpg" alt="Mission Green Hosur — CREDAI Miyawaki memento, 15 August 2026" loading="lazy">
+          </div>
+          <div class="spotlight-body">
+            <span class="kicker">15 August 2026</span>
+            <h2>Mission Green Hosur — 25,000 trees in a single day</h2>
+            <p>An Independence Day drive with CREDAI Hosur, Global Calcium and Kansai Nerolac — honoured by the Hosur City Municipal Corporation.</p>
+            <a href="gallery.html" class="btn btn-primary">View Full Gallery
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </a>
+          </div>
+        </article>
       </div>
     </section>
 
@@ -512,9 +386,6 @@
             <div class="frame"><img src="images/award-presentation.jpg"
                 alt="Karisakattu Poove Trust team receiving the Green Champion Award from the Krishnagiri District Collector"
                 loading="lazy"></div>
-            <div class="frame frame-doc" style="margin-top:16px"><img src="images/award-green-champion.jpg"
-                alt="Green Champion Award 2023 certificate — Government of Tamil Nadu, awarded to Karisakattu Poove Trust"
-                loading="lazy"></div>
           </div>
           <div class="split-body" data-reveal data-delay="1">
             <span class="pill">🏆 Government of Tamil Nadu</span>
@@ -541,48 +412,82 @@
           <h2>Featured in the press</h2>
           <p>Our green mission has been recognised by leading media for its impact across Hosur and Krishnagiri.</p>
         </div>
-        <div class="home-slider photo-carousel press-carousel" data-reveal>
-          <button class="he-nav he-prev" type="button" aria-label="Previous news clipping"><svg viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M15 18l-6-6 6-6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></button>
-          <div class="pc-viewport">
-            <div class="pc-track">
-              <figure class="pc-slide"><a href="images/team6.jpeg" target="_blank" rel="noopener"><img
-                    src="images/team6.jpeg"
-                    alt="The New Indian Express feature: 30 youngsters on a green mission, plan to plant 10,000 palm seeds"
-                    loading="lazy"></a>
-                <figcaption>The New Indian Express &middot; 30 youngsters on a green mission &mdash; 10,000 palm seeds
-                </figcaption>
-              </figure>
-              <figure class="pc-slide"><a href="images/banner-image/collecter2-award.jpeg" target="_blank"
-                  rel="noopener"><img src="images/banner-image/collecter2-award.jpeg"
-                    alt="Dinamalar news: District Collector honours Karisakattu Poove Trust with an award on Independence Day"
-                    loading="lazy"></a>
-                <figcaption>Dinamalar &middot; Collector honours the Trust on Independence Day</figcaption>
-              </figure>
-              <figure class="pc-slide"><a href="images/banner-image/collecter3.jpeg" target="_blank" rel="noopener"><img
-                    src="images/banner-image/collecter3.jpeg"
-                    alt="Newspaper report: 5,500 palm seeds sown along Hosur lake bunds by volunteers" loading="lazy"></a>
-                <figcaption>5,500 palm seeds sown along Hosur lake bunds</figcaption>
-              </figure>
-              <figure class="pc-slide"><a href="images/banner-image/collecte4.jpeg" target="_blank" rel="noopener"><img
-                    src="images/banner-image/collecte4.jpeg"
-                    alt="Newspaper report: voter awareness rally in Hosur for the 2022 local body elections with trust volunteers"
-                    loading="lazy"></a>
-                <figcaption>Voter awareness rally &middot; Hosur local body elections</figcaption>
-              </figure>
+        <div class="press-grid" data-reveal>
+          <a class="press-card" href="images/team6.jpeg" target="_blank" rel="noopener">
+            <img src="images/team6.jpeg" alt="The New Indian Express feature: 30 youngsters on a green mission" loading="lazy">
+            <div class="press-meta">
+              <span class="press-src">The New Indian Express</span>
+              <span class="press-title">30 youngsters on a green mission — 10,000 palm seeds</span>
             </div>
-          </div>
-          <button class="he-nav he-next" type="button" aria-label="Next news clipping"><svg viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
-            </svg></button>
-          <div class="pc-dots" role="tablist" aria-label="News clippings"></div>
+          </a>
+          <a class="press-card" href="images/banner-image/collecter2-award.jpeg" target="_blank" rel="noopener">
+            <img src="images/banner-image/collecter2-award.jpeg" alt="Dinamalar: District Collector honours the Trust" loading="lazy">
+            <div class="press-meta">
+              <span class="press-src">Dinamalar</span>
+              <span class="press-title">Collector honours the Trust on Independence Day</span>
+            </div>
+          </a>
+          <a class="press-card" href="images/banner-image/collecter3.jpeg" target="_blank" rel="noopener">
+            <img src="images/banner-image/collecter3.jpeg" alt="5,500 palm seeds sown along Hosur lake bunds" loading="lazy">
+            <div class="press-meta">
+              <span class="press-src">Press</span>
+              <span class="press-title">5,500 palm seeds sown along Hosur lake bunds</span>
+            </div>
+          </a>
+          <a class="press-card" href="images/banner-image/collecte4.jpeg" target="_blank" rel="noopener">
+            <img src="images/banner-image/collecte4.jpeg" alt="Voter awareness rally in Hosur" loading="lazy">
+            <div class="press-meta">
+              <span class="press-src">Local press</span>
+              <span class="press-title">Voter awareness rally · Hosur local body elections</span>
+            </div>
+          </a>
         </div>
       </div>
     </section>
 
+    <!-- ============ GALLERY PREVIEW ============ -->
+    <section class="section">
+      <div class="container">
+        <div class="section-head center" data-reveal>
+          <span class="kicker">Moments of Impact</span>
+          <h2>From our gallery</h2>
+          <p>Glimpses of plantation drives, smiling faces and forests taking root.</p>
+        </div>
+        <div class="home-photos" data-reveal>
+          <figure>
+            <img src="images/gallery/kid-planting.jpg" alt="A child planting a sapling" loading="lazy">
+            <figcaption>School plantation</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gallery/ola2.jpg" alt="OLA Miyawaki forest after 6 months" loading="lazy">
+            <figcaption>OLA Miyawaki · Pochampalli</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gallery/ssf25k.jpg" alt="25,000-sapling Miyawaki forest" loading="lazy">
+            <figcaption>25,000 saplings · Pantharakuttai</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gallery/volunteers-women.jpg" alt="Volunteers at a plantation drive" loading="lazy">
+            <figcaption>Volunteers in action</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gallery/lake.jpg" alt="Forest by Bedrapalli Lake" loading="lazy">
+            <figcaption>Bedrapalli Lake</figcaption>
+          </figure>
+          <figure>
+            <img src="images/gallery/green.jpg" alt="A thriving Miyawaki canopy" loading="lazy">
+            <figcaption>A thriving canopy</figcaption>
+          </figure>
+        </div>
+        <div class="center mt-l" data-reveal>
+          <a href="gallery.html" class="btn btn-ghost">View Full Gallery
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- ============ WHATSAPP CHANNEL ============ -->
     <section class="section tight" aria-label="WhatsApp Channel">
@@ -690,70 +595,15 @@
             </div>
           </article>
         </div>
-      </div>
-    </section>
-
-    <!-- ============ WHY US ============ -->
-    <section class="section">
-      <div class="container">
-        <div class="section-head center" data-reveal>
-          <span class="kicker">Why Choose Us</span>
-          <h2>Impact you can trust</h2>
-          <p>Transparency, community ownership and measurable results guide everything we do.</p>
-        </div>
-        <div class="feature-grid">
-          <div class="feature" data-reveal>
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2 4 6v6c0 5 3.4 8.5 8 10 4.6-1.5 8-5 8-10V6z" />
-                <path d="m9 12 2 2 4-4" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></div>
-            <h3>Verified & Transparent</h3>
-            <p>Registered trust with audited accounts and public impact reports for every rupee donated.</p>
-          </div>
-          <div class="feature" data-reveal data-delay="1">
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="9" cy="7" r="4" />
-                <path d="M3 21v-2a6 6 0 0 1 12 0v2M16 3.13a4 4 0 0 1 0 7.75M21 21v-2a4 4 0 0 0-3-3.87" />
-              </svg></div>
-            <h3>Community Driven</h3>
-            <p>Local volunteers and farmers lead every project, ensuring it survives long after planting day.</p>
-          </div>
-          <div class="feature" data-reveal data-delay="2">
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M12 2v20M5 9l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></div>
-            <h3>Long-Term Care</h3>
-            <p>We don't just plant — we water, protect and track survival rates above 85% for three years.</p>
-          </div>
-          <div class="feature" data-reveal>
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <rect x="3" y="3" width="18" height="18" rx="2" />
-                <path d="M3 9h18M9 21V9" />
-              </svg></div>
-            <h3>CSR Partnerships</h3>
-            <p>Trusted by companies and schools for credible, well-documented CSR and green initiatives.</p>
-          </div>
-          <div class="feature" data-reveal data-delay="1">
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M21 11.5a8.38 8.38 0 0 1-9 8.5 8.5 8.5 0 1 1 7.6-12.8" stroke-linecap="round" />
-                <path d="m22 4-10 10-3-3" stroke-linecap="round" stroke-linejoin="round" />
-              </svg></div>
-            <h3>Measurable Impact</h3>
-            <p>Every drive is geo-tagged and counted, so you see exactly where your support takes root.</p>
-          </div>
-          <div class="feature" data-reveal data-delay="2">
-            <div class="f-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M7 19a5 5 0 0 1-.5-9.97A6 6 0 0 1 18 9.5a4.5 4.5 0 0 1-.5 9z" />
-              </svg></div>
-            <h3>Sustainability First</h3>
-            <p>Native species, organic methods and water-wise design make every project last for generations.</p>
-          </div>
+        <div class="center mt-l" data-reveal>
+          <a href="projects.html" class="btn btn-ghost">See Our Projects
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </a>
         </div>
       </div>
     </section>
-
-
-
 
     <!-- ============ PARTNERS ============ -->
     <section class="section tight">
@@ -914,7 +764,7 @@
             <span><b>Karisakattu Poove</b><small>Trust</small></span>
           </a>
           <p>An environmental &amp; social welfare trust in Hosur, Tamil Nadu — planting trees, growing forests and
-            uplifting communities since 2020.</p>
+            uplifting communities since 2019.</p>
           <div class="social">
             <a href="https://www.facebook.com/share/g/1D2jQLs8yd/" target="_blank" rel="noopener"
               aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor">
@@ -991,7 +841,7 @@
         <span>© <span data-year>2025</span> Karisakattu Poove Trust. All rights reserved.</span>
         <span>Made with 🌱 for a greener tomorrow · <a href="contact.html">Privacy Policy</a></span>
         <span>Developed by Thiru · Website queries only: <a href="https://wa.me/916374217724" target="_blank"
-            rel="noopener">WhatsApp 63742 17724</a> · <span class="site-version" style="opacity:.7">v1.0.4</span></span>
+            rel="noopener">WhatsApp 63742 17724</a> · <span class="site-version" style="opacity:.7">v1.0.5</span></span>
       </div>
     </div>
   </footer>
@@ -1001,59 +851,11 @@
       <path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round" />
     </svg></button>
 
-  <!-- Sticky bottom CTA banner — slides up after scrolling -->
-  <div id="stickyCta" class="sticky-cta" role="region" aria-label="Support Karisakattu Poove Trust">
-    <div class="container sticky-cta-inner">
-      <span class="sticky-cta-text">🌱 <b>Help us plant 2,00,000 trees this year.</b> Your support grows a greener
-        tomorrow.</span>
-      <div class="sticky-cta-actions">
-        <a href="donate.html" class="btn btn-gold">Donate Now</a>
-        <a href="volunteer.html" class="btn btn-ghost">Volunteer</a>
-      </div>
-      <button class="sticky-cta-close" aria-label="Dismiss banner">&times;</button>
-    </div>
-  </div>
-
   <script src="js/config.js"></script>
   <script src="js/home-events.js"></script>
   <script src="js/register.js"></script>
   <script src="js/script.js"></script>
   <script src="js/tree-donate.js?v=2"></script>
-  <script>
-    /* Mission Green Hosur — full-width image slideshow (crossfade + dots + arrows) */
-    (function () {
-      var box = document.querySelector('.hero-slideshow');
-      if (!box) return;
-      var slides = Array.prototype.slice.call(box.querySelectorAll('figure'));
-      if (slides.length < 2) return;
-      var dotsBox = box.querySelector('.hs-dots'), dots = [];
-      slides.forEach(function (_, k) {
-        var b = document.createElement('button');
-        b.className = 'hs-dot' + (k === 0 ? ' on' : ''); b.type = 'button';
-        b.setAttribute('aria-label', 'Go to image ' + (k + 1));
-        b.addEventListener('click', function () { go(k); restart(); });
-        dotsBox.appendChild(b); dots.push(b);
-      });
-      var i = 0, timer = null;
-      var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion:reduce)').matches;
-      function go(n) {
-        slides[i].classList.remove('on'); if (dots[i]) dots[i].classList.remove('on');
-        i = (n + slides.length) % slides.length;
-        slides[i].classList.add('on'); if (dots[i]) dots[i].classList.add('on');
-      }
-      function next() { go(i + 1); }
-      function prev() { go(i - 1); }
-      function stop() { if (timer) { clearInterval(timer); timer = null; } }
-      function start() { if (reduce) return; stop(); timer = setInterval(next, 4000); }
-      function restart() { stop(); start(); }
-      var bn = box.querySelector('.hs-next'), bp = box.querySelector('.hs-prev');
-      if (bn) bn.addEventListener('click', function () { next(); restart(); });
-      if (bp) bp.addEventListener('click', function () { prev(); restart(); });
-      box.addEventListener('mouseenter', stop);
-      box.addEventListener('mouseleave', start);
-      start();
-    })();
-  </script>
   <script src="js/i18n.js"></script>
 </body>
 
