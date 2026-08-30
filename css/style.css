@@ -1110,6 +1110,11 @@ body.home .stat-card .ico{width:48px;height:48px;margin-bottom:12px}
 .spotlight-body{padding:clamp(28px,4vw,46px);display:flex;flex-direction:column;justify-content:center}
 .spotlight-body h2{margin-bottom:14px;font-size:clamp(1.55rem,3vw,2.15rem)}
 .spotlight-body p{margin-bottom:22px;font-size:1.05rem}
+.spotlight-stats{display:flex;flex-wrap:wrap;gap:clamp(22px,4vw,44px);margin:0 0 24px}
+.spotlight-stats .ss{display:flex;flex-direction:column}
+.spotlight-stats b{font-family:var(--ff-display);font-weight:800;font-size:clamp(1.6rem,3vw,2.15rem);line-height:1;color:var(--green-700);font-variant-numeric:tabular-nums}
+[data-theme="dark"] .spotlight-stats b{color:var(--green-400)}
+.spotlight-stats span{margin-top:5px;font-size:.84rem;color:var(--muted);letter-spacing:.01em}
 @media (max-width:800px){
   .spotlight{grid-template-columns:1fr}
   .spotlight-media img{aspect-ratio:16/10;min-height:0}
