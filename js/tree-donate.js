@@ -57,7 +57,7 @@
     '    <div class="td-grid">' +
     '      <div class="field"><label for="td-email">Email <span class="req">*</span></label>' +
     '        <input id="td-email" type="email" placeholder="you@example.com" autocomplete="email"></div>' +
-    '      <div class="field"><label for="td-phone">Phone <span class="opt">(optional)</span></label>' +
+    '      <div class="field"><label for="td-phone">Phone <span style="color:#c0392b">*</span> <span class="opt">(for WhatsApp receipt)</span></label>' +
     '        <input id="td-phone" type="tel" placeholder="10-digit mobile" autocomplete="tel"></div>' +
     '    </div>' +
     '    <button type="button" class="btn btn-gold btn-block btn-lg td-donate">Donate <span class="td-btn-amt">₹500</span></button>' +
@@ -163,6 +163,7 @@
     msg.style.color = "var(--gold-600)";
     if (!name) { msg.textContent = "Please enter your name."; modal.querySelector("#td-name").focus(); return; }
     if (!EMAIL_RE.test(email)) { msg.textContent = "Please enter a valid email for your receipt."; modal.querySelector("#td-email").focus(); return; }
+    if (phone.replace(/\D/g, "").length < 10) { msg.textContent = "Please enter your 10-digit mobile for the WhatsApp receipt."; modal.querySelector("#td-phone").focus(); return; }
     if (amount < 10) { msg.textContent = "Minimum donation is ₹10."; amtInput.focus(); return; }
     if (amount > MAX_AMT) { msg.textContent = "Maximum online donation is ₹20,00,000. Please contact us for larger gifts."; amtInput.focus(); return; }
     if (!RZP_KEY) { msg.textContent = "Payments are not configured yet. Please try the Donate page."; return; }

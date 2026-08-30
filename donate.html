@@ -199,7 +199,7 @@
                 <input id="rzp-email" type="email" placeholder="you@example.com" autocomplete="email" required>
               </div>
               <div class="rzp-field">
-                <label for="rzp-phone">Phone <span style="font-weight:400;color:var(--muted)">(optional)</span></label>
+                <label for="rzp-phone">Phone <span style="color:#c0392b">*</span> <span style="font-weight:400;color:var(--muted)">(for WhatsApp receipt)</span></label>
                 <input id="rzp-phone" type="tel" placeholder="10-digit mobile" autocomplete="tel">
               </div>
             </div>
@@ -371,6 +371,11 @@
         if (!EMAIL_RE.test(email)) {
           alert("Please enter a valid email address so we can send your receipt.");
           emailEl.focus(); return;
+        }
+        var phoneDigits = phone.replace(/\D/g, "");
+        if (phoneDigits.length < 10) {
+          alert("Please enter your 10-digit mobile number so we can send your WhatsApp receipt.");
+          (document.getElementById("rzp-phone") || {}).focus && document.getElementById("rzp-phone").focus(); return;
         }
         if (amount < 10) { alert("The minimum online donation is ₹10."); amtInput.focus(); return; }
         if (amount > MAX_AMT) {
