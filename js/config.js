@@ -5,7 +5,7 @@
    =================================================================== */
 window.KPT_CONFIG = {
   // e.g. "https://script.google.com/macros/s/AKfy....../exec"
-  EVENTS_API: "https://script.google.com/macros/s/AKfycbx7CmVACkHazepffD9nRYVHJ5VKIQ8NhOIgDLZjNdzD8-stW2oZtzuArT8D9zncMTw0/exec",
+  EVENTS_API: "https://script.google.com/macros/s/AKfycbzvCo6o7rJmEtk1dfWhgQnMR_lORXXuP8HoFm9yAQgeCi6ze14llihMfIRIYJNorxM/exec",
   // Poster shown inside the featured (nearest upcoming) event card on the
   // Events page, and used as the page's social-share image.
   FEATURED_EVENT_IMAGE: "images/event-banner-aug15.jpg",
