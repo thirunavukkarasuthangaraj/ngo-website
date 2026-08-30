@@ -1046,7 +1046,7 @@ body.cta-visible .wa-float{bottom:90px}
 /* ===================================================================
    Full-width image slideshow banner (no text) — homepage
    =================================================================== */
-.hero-slideshow{position:relative;width:100%;height:clamp(460px,76vh,860px);overflow:hidden;background:var(--green-900)}
+.hero-slideshow{position:relative;width:100%;height:clamp(460px,76vh,860px);margin:clamp(48px,7vw,96px) 0;overflow:hidden;background:var(--green-900)}
 .hero-slideshow figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity 1.1s ease}
 .hero-slideshow figure.on{opacity:1;z-index:1}
 .hero-slideshow img{width:100%;height:100%;object-fit:cover;display:block}
