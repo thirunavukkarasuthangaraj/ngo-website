@@ -372,7 +372,7 @@
           alert("Please enter a valid email address so we can send your receipt.");
           emailEl.focus(); return;
         }
-        if (amount < 1) { alert("Please enter a donation amount."); amtInput.focus(); return; }
+        if (amount < 50) { alert("The minimum online donation is ₹50."); amtInput.focus(); return; }
         if (amount > MAX_AMT) {
           alert("The maximum online donation is ₹20,00,000. For a larger contribution please contact us.");
           amtInput.focus(); return;
