@@ -71,6 +71,8 @@
     "Trees & Saplings": "மரங்கள் & கன்றுகள்", "Miyawaki Forests": "மியாவாகி காடுகள்", "Locations": "இடங்கள்",
     "CSR & Govt Partners": "CSR & அரசு கூட்டாளர்கள்", "Green Champion Award": "பசுமை சாம்பியன் விருது",
     "Volunteers": "தன்னார்வலர்கள்", "Villages": "கிராமங்கள்", "Active Volunteers": "செயல் தன்னார்வலர்கள்",
+    "Beyond these documented forests, we have been sowing palmyra (panai maram) seeds since 2019 — more than 50,000 seeds so far, with about 3 seeds from every palm fruit.":
+      "இந்த பதிவான காடுகளுக்கு அப்பால், 2019 முதல் பனை மர விதைகளையும் விதைத்து வருகிறோம் — இதுவரை 50,000-க்கும் மேற்பட்ட விதைகள்; ஒவ்வொரு பனம்பழத்திலும் சுமார் 3 விதைகள்.",
     "Saplings Planted": "நடப்பட்ட கன்றுகள்", "Planting Since": "நடவு தொடங்கியது",
     "Drives Held": "நடத்திய முகாம்கள்", "Volunteer Hours": "தன்னார்வ நேரம்", "Schools": "பள்ளிகள்",
     "Miyawaki Forests Created": "உருவாக்கிய மியாவாகி காடுகள்",
