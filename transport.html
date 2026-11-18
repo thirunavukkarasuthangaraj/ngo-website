@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Where Is My Bus — Live Bus Tracking | Karisakattu Poove Trust</title>
+<meta name="description" content="Track your bus live on the map. A free community service from Karisakattu Poove Trust, Hosur — see where your bus is right now and roughly when it will reach your stop.">
+<meta name="theme-color" content="#2e7d32">
+<link rel="canonical" href="https://karisakattupoovetrust.org/transport.html">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Where Is My Bus — Karisakattu Poove Trust">
+<meta property="og:description" content="Live bus tracking for Hosur and nearby routes. Free community service.">
+<meta property="og:url" content="https://karisakattupoovetrust.org/transport.html">
+<meta property="og:image" content="https://karisakattupoovetrust.org/images/event-banner-aug15.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/svg+xml" href="images/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="css/style.css?v=128">
+</head>
+<body>
+<div id="loader"><div class="loader-mark"><img class="loader-logo" src="images/logo-clean.png" alt="Karisakattu Poove Trust logo"><span>Karisakattu Poove</span></div></div>
+
+<header class="site">
+  <div class="container">
+    <a class="brand" href="index.html"><img class="brand-logo" src="images/logo-full.png" alt="Karisakattu Poove Trust"></a>
+    <div class="nav-overlay"></div>
+    <nav class="primary" aria-label="Primary"><ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="transport.html" class="active">Transport</a></li>
+      <li><a href="volunteer.html">Volunteer</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul></nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" aria-label="Toggle dark mode" title="Toggle theme"><svg class="sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><svg class="moon" viewBox="0 0 24 24" fill="currentColor"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg></button>
+      <a href="donate.html" class="btn btn-gold">Donate</a>
+      <button class="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="page-hero compact">
+  <img src="images/gallery/gail.jpg" alt="Roads around Hosur">
+  <div class="container">
+    <span class="kicker">Community Service</span>
+    <h1>Where is my bus?</h1>
+    <p>See your bus moving live on the map and roughly when it reaches your stop. Free, for everyone.</p>
+    <div class="crumbs"><a href="index.html">Home</a> / <span>Transport</span></div>
+  </div>
+</section>
+
+<section class="section tight-top">
+  <div class="container">
+    <div id="trNotice" class="tr-notice" style="display:none"></div>
+
+    <div class="tr-layout">
+      <!-- left: pick a bus -->
+      <aside class="tr-side form-card">
+        <div class="field"><label for="busSearch">Find your bus</label>
+          <input type="search" id="busSearch" placeholder="Bus number, name or route…" autocomplete="off"></div>
+        <div id="busList" class="tr-list"><p class="tr-muted">Loading buses…</p></div>
+
+        <div id="busInfo" class="tr-info" style="display:none">
+          <div class="tr-info-head">
+            <span class="tr-badge" id="busState">offline</span>
+            <strong id="busTitle"></strong>
+            <span class="tr-muted" id="busOperator"></span>
+          </div>
+          <dl class="tr-dl">
+            <dt>Route</dt><dd id="busRoute">—</dd>
+            <dt>Speed</dt><dd id="busSpeed">—</dd>
+            <dt>Last seen</dt><dd id="busSeen">—</dd>
+          </dl>
+          <div class="field" id="stopPick" style="display:none"><label for="stopSelect">My stop</label>
+            <select id="stopSelect"></select></div>
+          <p class="tr-eta" id="busEta"></p>
+          <p class="tr-muted small">Arrival time is an estimate from the bus's current position and speed. Traffic can change it.</p>
+        </div>
+      </aside>
+
+      <!-- right: map -->
+      <div class="tr-map-wrap">
+        <div id="map" class="tr-map" aria-label="Live map"></div>
+      </div>
+    </div>
+
+    <div class="tr-foot">
+      <p class="tr-muted">Are you a bus or lorry owner? Track your own fleet live, free of charge.
+        <a href="transport-owner.html" class="tr-link">Owner login / register →</a></p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <img class="cta-bg" src="images/forest-feature.jpg" alt="">
+  <div class="cta-pattern"></div>
+  <div class="container"><div data-reveal>
+    <h2>Why does a tree trust track buses?</h2>
+    <p>Fewer people waiting on the roadside, fewer wasted trips, fewer private vehicles. A bus you can trust is a greener city.</p>
+    <div class="cta-cta"><a href="about.html" class="btn btn-white btn-lg">About the Trust</a><a href="donate.html" class="btn btn-gold btn-lg">Donate</a></div>
+  </div></div>
+</section>
+</main>
+
+<footer class="site" id="site-footer"></footer>
+<button id="toTop" aria-label="Back to top"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-database-compat.js"></script>
+<script src="js/config.js"></script>
+<script src="js/footer.js?v=1.0.4"></script>
+<script src="js/transport.js?v=1"></script>
+<script src="js/script.js"></script>
+<script src="js/i18n.js"></script>
+<script>
+(function () {
+  var T = window.KPTTransport, $ = function (id) { return document.getElementById(id); };
+  var buses = [], byId = {}, pos = {}, settings = { stale_after: 120 };
+  var map = T.makeMap("map"), markers = {}, routeLayer = L.layerGroup().addTo(map);
+  var selected = null, unsub = null, tick = null;
+
+  function notice(html) { var n = $("trNotice"); n.innerHTML = html; n.style.display = html ? "block" : "none"; }
+
+  if (!T.configured) notice("⚙️ Transport backend not connected yet. Set <b>TRANSPORT_API</b> in <b>js/config.js</b> (see TRANSPORT-SETUP.md).");
+  else if (!T.liveReady()) notice("Live feed not connected yet — buses will be listed but positions need the Firebase config in <b>js/config.js</b>.");
+
+  // ---- load public buses ----
+  T.get("publicVehicles").then(function (r) {
+    if (!r.ok) { $("busList").innerHTML = '<p class="tr-muted">' + T.esc(r.error || "Could not load buses") + "</p>"; return; }
+    buses = r.vehicles || []; settings = r.settings || settings;
+    buses.forEach(function (b) { byId[b.id] = b; });
+    renderList("");
+    if (!buses.length) return;
+    unsub = T.watchLive(buses.map(function (b) { return b.id; }), onPos);
+    tick = setInterval(refreshSelected, 5000);
+    var want = new URLSearchParams(location.search).get("bus");
+    if (want && byId[want]) select(want);
+  });
+
+  function renderList(q) {
+    q = q.toLowerCase();
+    var list = buses.filter(function (b) {
+      return !q || [b.name, b.regNo, b.route, b.source, b.destination, b.operator].join(" ").toLowerCase().indexOf(q) >= 0;
+    });
+    if (!buses.length) { $("busList").innerHTML = '<p class="tr-muted">No buses are being tracked yet. Owners can add theirs from the link below.</p>'; return; }
+    if (!list.length) { $("busList").innerHTML = '<p class="tr-muted">No bus matches that search.</p>'; return; }
+    $("busList").innerHTML = list.map(function (b) {
+      var st = T.state(pos[b.id], settings.stale_after);
+      return '<button type="button" class="tr-item' + (selected === b.id ? " on" : "") + '" data-id="' + b.id + '">' +
+        '<span class="tr-item-ico">' + T.emoji("bus") + '</span><span class="tr-item-main"><b>' + T.esc(b.name) + '</b>' +
+        '<small>' + T.esc(b.source && b.destination ? b.source + " → " + b.destination : b.route || b.regNo) + '</small></span>' +
+        '<span class="tr-badge tr-' + st + '">' + st + "</span></button>";
+    }).join("");
+  }
+  $("busSearch").addEventListener("input", function () { renderList(this.value); });
+  $("busList").addEventListener("click", function (e) { var b = e.target.closest("[data-id]"); if (b) select(b.dataset.id); });
+
+  // ---- live positions ----
+  function onPos(id, p) {
+    pos[id] = p;
+    var b = byId[id]; if (!b) return;
+    var st = T.state(p, settings.stale_after);
+    if (p && p.lat) {
+      var ll = [p.lat, p.lng];
+      if (!markers[id]) markers[id] = L.marker(ll, { icon: T.vehicleIcon(b, st) }).addTo(map).on("click", function () { select(id); });
+      else { markers[id].setLatLng(ll); markers[id].setIcon(T.vehicleIcon(b, st)); }
+    }
+    var item = $("busList").querySelector('[data-id="' + id + '"] .tr-badge');
+    if (item) { item.className = "tr-badge tr-" + st; item.textContent = st; }
+    if (selected === id) refreshSelected();
+  }
+
+  function select(id) {
+    selected = id; var b = byId[id]; if (!b) return;
+    $("busList").querySelectorAll(".tr-item").forEach(function (el) { el.classList.toggle("on", el.dataset.id === id); });
+    $("busInfo").style.display = "block";
+    $("busTitle").textContent = b.name + (b.regNo && b.regNo !== b.name ? " · " + b.regNo : "");
+    $("busOperator").textContent = b.operator ? "by " + b.operator : "";
+    $("busRoute").textContent = b.source && b.destination ? b.source + " → " + b.destination : (b.route || "—");
+    // stops
+    routeLayer.clearLayers();
+    var stops = (b.stops || []).filter(function (s) { return s.lat && s.lng; });
+    var sel = $("stopSelect"); sel.innerHTML = "";
+    if (stops.length) {
+      $("stopPick").style.display = "";
+      sel.innerHTML = '<option value="">— choose your stop —</option>' + stops.map(function (s, i) { return '<option value="' + i + '">' + T.esc(s.name) + "</option>"; }).join("");
+      stops.forEach(function (s, i) { L.marker([s.lat, s.lng], { icon: T.stopIcon(i + 1) }).bindTooltip(s.name).addTo(routeLayer); });
+      L.polyline(stops.map(function (s) { return [s.lat, s.lng]; }), { color: "#2e7d32", weight: 3, opacity: .5, dashArray: "6 8" }).addTo(routeLayer);
+    } else $("stopPick").style.display = "none";
+    var p = pos[id];
+    if (p && p.lat) map.setView([p.lat, p.lng], Math.max(map.getZoom(), 14));
+    else if (stops.length) map.fitBounds(routeLayer.getBounds().pad(.2));
+    refreshSelected();
+    try { history.replaceState(null, "", "?bus=" + id); } catch (e) {}
+  }
+  $("stopSelect").addEventListener("change", refreshSelected);
+
+  function refreshSelected() {
+    if (!selected) return;
+    var b = byId[selected], p = pos[selected], st = T.state(p, settings.stale_after);
+    var badge = $("busState"); badge.className = "tr-badge tr-" + st; badge.textContent = st;
+    $("busSpeed").textContent = p && st !== "offline" ? Math.round(Number(p.speed) || 0) + " km/h" : "—";
+    $("busSeen").textContent = p && p.ts ? T.ago(p.ts) : "not yet today";
+    var si = $("stopSelect").value, stops = (b.stops || []).filter(function (s) { return s.lat && s.lng; });
+    var etaEl = $("busEta");
+    if (si !== "" && stops[si] && p && p.lat && st !== "offline") {
+      var e = T.eta(p, stops[si]);
+      etaEl.innerHTML = "🕒 About <b>" + (e.min < 1 ? "1" : e.min) + " min</b> to " + T.esc(stops[si].name) + " <span class='tr-muted'>(" + e.km.toFixed(1) + " km)</span>";
+    } else if (st === "offline") etaEl.innerHTML = "This bus is not sharing its location right now.";
+    else etaEl.innerHTML = "";
+  }
+})();
+</script>
+</body>
+</html>

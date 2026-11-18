@@ -11,5 +11,23 @@ window.KPT_CONFIG = {
   FEATURED_EVENT_IMAGE: "images/event-banner-aug15.jpg",
   // Razorpay key — shared by the donate page and the "Plant a Tree" popup.
   // Swap the rzp_live_ key here if it ever changes (one place, both places update).
-  RAZORPAY_KEY: "rzp_live_T50zAZykTr9Rhq"
+  RAZORPAY_KEY: "rzp_live_T50zAZykTr9Rhq",
+
+  /* ---------------- Transport / live tracking ----------------
+     TRANSPORT_API : Apps Script web-app URL for google-apps-script/Transport.gs
+                     (separate deployment from EVENTS_API). See TRANSPORT-SETUP.md.
+     FIREBASE      : Firebase web config for the LIVE positions database.
+                     Leave databaseURL empty until Firebase is set up — the pages
+                     still load, they just show "live feed not connected".     */
+  TRANSPORT_API: "",
+  FIREBASE: {
+    apiKey: "",
+    authDomain: "",
+    databaseURL: "",
+    projectId: "",
+    appId: ""
+  },
+  // Map centre when nothing is being tracked yet (Hosur)
+  MAP_CENTER: [12.7409, 77.8253],
+  MAP_ZOOM: 12
 };
